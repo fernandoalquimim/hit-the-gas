@@ -1,5 +1,7 @@
 import { Josefin_Sans } from "next/font/google";
+
 import "@/app/_styles/global.css";
+import Header from "./_components/Header";
 
 const josefin = Josefin_Sans({
   subsets: ["latin"],
@@ -7,14 +9,21 @@ const josefin = Josefin_Sans({
 });
 
 export const metadata = {
-  title: "Hit the Gas",
-  description: "Rent wild cars",
+  title: {
+    template: "%s | Hit the Gas",
+    default: "Welcome | Hit the Gas",
+  },
+  description:
+    "The road will never be the same. Rent wild cars and hit the gas.",
 };
 
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${josefin.className} antialiased bg-primary-950`}>
+      <body
+        className={`${josefin.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
+      >
+        <Header />
         {children}
       </body>
     </html>
