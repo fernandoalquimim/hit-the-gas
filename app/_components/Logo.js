@@ -6,7 +6,7 @@ import logo from "@/public/company-logo.png";
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-4 z-10">
-      <Image src={logo} width="400" quality={100} alt="Hit the Gas logo" />
+      <Image src={logo} width="350" quality={100} alt="Hit the Gas logo" />
     </Link>
   );
 }

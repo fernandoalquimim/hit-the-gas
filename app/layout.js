@@ -1,6 +1,7 @@
 import { Josefin_Sans } from "next/font/google";
 
 import "@/app/_styles/global.css";
+
 import Header from "./_components/Header";
 
 const josefin = Josefin_Sans({
@@ -24,7 +25,7 @@ function RootLayout({ children }) {
         className={`${josefin.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
       >
         <Header />
-        {children}
+        <div className="flex-1 grid">{children}</div>
       </body>
     </html>
   );

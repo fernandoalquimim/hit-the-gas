@@ -1,5 +1,7 @@
+import Slideshow from "./_components/Slideshow";
+
 function Page() {
-  return <div>Hello, Hit The Gas!</div>;
+  return <Slideshow />;
 }
 
 export default Page;
