@@ -28,6 +28,7 @@ function SlideShow() {
       pagination={{
         clickable: false,
       }}
+      allowTouchMove={false}
     >
       <SwiperSlide>
         <Image
