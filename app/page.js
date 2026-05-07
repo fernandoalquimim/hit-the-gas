@@ -4,7 +4,7 @@ function Page() {
   return (
     <div className="flex-1 grid relative">
       <Slideshow />
-      <div className="absolute z-10 place-self-center text-center flex flex-col items-center gap-4 -mt-72">
+      <div className="absolute z-10 place-self-center text-center flex flex-col items-center gap-4 -mt-72 sliding-div">
         <div>
           <h1
             className="h1-homepage text-7xl"

@@ -82,3 +82,18 @@
     15px 15px 30px rgba(0, 0, 0, 0.1);
   mix-blend-mode: multiply;
 }
+
+.sliding-div {
+  animation: slide-up 0.75s;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    padding-top: 10rem;
+  }
+  to {
+    opacity: 100%;
+    padding-top: 0;
+  }
+}
