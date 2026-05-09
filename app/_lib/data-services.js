@@ -17,3 +17,13 @@ export async function createClient(newClient) {
 
   return data;
 }
+
+export async function getCars() {
+  const { data, error } = await supabase
+    .from("cars")
+    .select("id, name, maxCapacity, discount, image");
+
+  if (error) throw new Error("Cars could not be loaded");
+
+  return data;
+}

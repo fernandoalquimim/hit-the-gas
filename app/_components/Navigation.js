@@ -8,6 +8,14 @@ async function Navigation() {
     <nav className="z-10 text-xl">
       <ul className="flex gap-16 items-center">
         <li>
+          <Link
+            href="/cars"
+            className="hover:text-accent-400 transition-colors"
+          >
+            Cars
+          </Link>
+        </li>
+        <li>
           {session?.user?.image ? (
             <Link
               href="/account"

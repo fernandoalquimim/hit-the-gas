@@ -14,6 +14,16 @@
   --color-primary-800: #2c3d4f;
   --color-primary-900: #1b2631;
   --color-primary-950: #141c24;
+  /* Logo theme */
+  --color-primary-1000: #f97d00;
+  --color-primary-1050: #e93f00;
+  --color-primary-1100: #2a1916;
+  --color-primary-1150: #f3e9d9;
+  --color-primary-1200: #fed903;
+  --color-primary-1250: #540e02;
+  --color-primary-1300: #a3846c;
+  --color-primary-1350: #fea600;
+  --color-primary-1400: #982202;
 
   --color-accent-50: #faf5f0;
   --color-accent-100: #f4ece1;
