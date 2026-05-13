@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css?family=Pirata+One|Rubik:900");
-
 @import "tailwindcss";
 
 @theme {
@@ -14,7 +12,7 @@
   --color-primary-800: #2c3d4f;
   --color-primary-900: #1b2631;
   --color-primary-950: #141c24;
-  /* Logo theme */
+  /* logo */
   --color-primary-1000: #f97d00;
   --color-primary-1050: #e93f00;
   --color-primary-1100: #2a1916;
@@ -38,6 +36,34 @@
   --color-accent-950: #382814;
 }
 
+@layer components {
+  .spinner {
+    margin: 3.2rem auto 1.6rem;
+    width: 60px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid theme("colors.primary.900");
+    border-right-color: theme("colors.primary.200");
+    animation: rotate 1s infinite linear;
+  }
+
+  .spinner-mini {
+    margin: 0;
+    width: 20px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid theme("colors.primary.200");
+    border-right-color: transparent;
+    animation: rotate 1s infinite linear;
+  }
+
+  @keyframes rotate {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}
+
 .swiper {
   width: 100%;
   height: 100%;
@@ -58,7 +84,7 @@
 .h1-homepage,
 .h3-homepage {
   text-transform: uppercase;
-  font-family: "Rubik", sans-serif;
+  font-family: var(--font-rubik), sans-serif;
   color: #e4e5e6;
 
   position: relative;

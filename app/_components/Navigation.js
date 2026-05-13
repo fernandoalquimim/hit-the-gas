@@ -31,7 +31,7 @@ async function Navigation() {
             </Link>
           ) : (
             <Link
-              href="/account"
+              href="/login"
               className="hover:text-accent-400 transition-colors"
             >
               Guest area

@@ -10,7 +10,7 @@ function CarCard({ car }) {
       <div className="flex-1 relative">
         <Image
           src={image}
-          alt={`Cabin ${name}`}
+          alt={`Car ${name}`}
           fill
           className="object-cover border-r border-primary-800"
         />
@@ -49,7 +49,7 @@ function CarCard({ car }) {
 
         <div className="bg-primary-950 border-t border-t-primary-800 text-right">
           <Link
-            href={`/cabins/${id}`}
+            href={`/cars/${id}`}
             className="border-l border-primary-800 py-4 px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900"
           >
             Details & reservation &rarr;

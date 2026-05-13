@@ -10,24 +10,20 @@ import car9 from "@/public/9.jpg";
 import car10 from "@/public/10.jpg";
 import car11 from "@/public/11.jpg";
 import car12 from "@/public/12.jpg";
-import car13 from "@/public/13.jpg";
-import car14 from "@/public/14.jpg";
 
 const cars = [
   { image: car1, classes: "object-cover object-right" },
-  { image: car2 },
+  { image: car2, classes: "object-cover object-center" },
   { image: car3 },
   { image: car4 },
   { image: car5 },
   { image: car6 },
   { image: car7, classes: "object-cover object-center" },
-  { image: car8 },
+  { image: car8, classes: "object-cover object-bottom" },
   { image: car9 },
   { image: car10 },
-  { image: car11, classes: "object-cover object-center" },
-  { image: car12, classes: "object-cover object-center" },
-  { image: car13 },
-  { image: car14 },
+  { image: car11, classes: "object-cover object-bottom" },
+  { image: car12 },
 ];
 
 export default cars;
