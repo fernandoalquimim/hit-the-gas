@@ -14,6 +14,7 @@ function SlideShow() {
     <Swiper
       modules={[EffectFade, Autoplay]}
       effect={"fade"}
+      loop={true}
       autoplay={{
         delay: 7000,
       }}

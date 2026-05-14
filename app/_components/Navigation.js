@@ -5,7 +5,7 @@ async function Navigation() {
   const session = await auth();
 
   return (
-    <nav className="z-10 text-xl">
+    <nav className="z-10 text-xl px-4 py-1.5 text-white bg-[#958f8f80] rounded-sm shadow-[0_0_25px_rgba(24,24,24,0.4)]">
       <ul className="flex gap-16 items-center">
         <li>
           <Link

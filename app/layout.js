@@ -12,7 +12,7 @@ const josefin = Josefin_Sans({
 const rubik = Rubik({
   subsets: ["latin"],
   display: "swap",
-  weight: "900",
+  // weight: "900",
   variable: "--font-rubik",
 });
 

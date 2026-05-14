@@ -81,36 +81,39 @@
   object-fit: cover;
 }
 
-.h1-homepage,
-.h3-homepage {
+.title-gratient-bg {
+  background: linear-gradient(to right, #c2c4c4, #f2f6f7, #c2c4c4);
+}
+
+.subtitle-gratient-bg {
+  background: linear-gradient(to right, #dce3e6, #f2f6f7, #dce3e6);
+}
+
+.rubik-upper-shadow {
   text-transform: uppercase;
   font-family: var(--font-rubik), sans-serif;
+  font-weight: 900;
   color: #e4e5e6;
 
   position: relative;
-  background: linear-gradient(to right, #c2c4c4, #f2f6f7, #c2c4c4);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.h1-homepage:before,
-.h1-homepage:after,
-.h3-homepage:before,
-.h3-homepage:after {
+.rubik-upper-shadow:before,
+.rubik-upper-shadow:after {
   content: attr(data-text);
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.h1-homepage:before,
-.h3-homepage:before {
+.rubik-upper-shadow:before {
   z-index: -1;
   text-shadow: -0.001em -0.001em 1px rgba(255, 255, 255, 0.15);
 }
 
-.h1-homepage:after,
-.h3-homepage:after {
+.rubik-upper-shadow:after {
   z-index: -2;
   text-shadow:
     5px 5px 10px rgba(0, 0, 0, 0.5),
@@ -120,10 +123,10 @@
 }
 
 .sliding-div {
-  animation: slide-up 0.75s;
+  animation: slide-div-up 0.75s;
 }
 
-@keyframes slide-up {
+@keyframes slide-div-up {
   from {
     opacity: 0;
     padding-top: 10rem;
@@ -131,5 +134,86 @@
   to {
     opacity: 100%;
     padding-top: 0;
+  }
+}
+
+:root {
+  --item-height: 50px;
+}
+
+.messages-scroller {
+  height: var(--item-height);
+  line-height: var(--item-height);
+  overflow: hidden;
+  font-family: var(--font-rubik), sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 24px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.messages-scroller-inner {
+  display: flex;
+  flex-direction: column;
+  animation: slide-message-up 102s infinite;
+}
+
+.messages-scroller-inner span {
+  height: var(--item-height);
+  display: block;
+}
+
+@keyframes slide-message-up {
+  0%,
+  8.088% {
+    transform: translateY(0);
+  }
+  8.333%,
+  16.421% {
+    transform: translateY(calc(-1 * var(--item-height)));
+  }
+  16.666%,
+  24.754% {
+    transform: translateY(calc(-2 * var(--item-height)));
+  }
+  25.000%,
+  33.088% {
+    transform: translateY(calc(-3 * var(--item-height)));
+  }
+  33.333%,
+  41.421% {
+    transform: translateY(calc(-4 * var(--item-height)));
+  }
+  41.666%,
+  49.754% {
+    transform: translateY(calc(-5 * var(--item-height)));
+  }
+  50.000%,
+  58.088% {
+    transform: translateY(calc(-6 * var(--item-height)));
+  }
+  58.333%,
+  66.421% {
+    transform: translateY(calc(-7 * var(--item-height)));
+  }
+  66.666%,
+  74.754% {
+    transform: translateY(calc(-8 * var(--item-height)));
+  }
+  75.000%,
+  83.088% {
+    transform: translateY(calc(-9 * var(--item-height)));
+  }
+  83.333%,
+  91.421% {
+    transform: translateY(calc(-10 * var(--item-height)));
+  }
+  91.666%,
+  99.755% {
+    transform: translateY(calc(-11 * var(--item-height)));
+  }
+  100% {
+    transform: translateY(calc(-12 * var(--item-height)));
   }
 }

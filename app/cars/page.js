@@ -22,12 +22,6 @@ function Page() {
           excitement!
         </strong>
       </p>
-      {/* <ul className="text-primary-200 text-lg mb-2">
-        <li>🔥 Drive iconic supercars on the open road</li>
-        <li>🔥 Ride as a passenger with an expert driver</li>
-        <li>🔥 Feel the speed, power, and excitement up close</li>
-        <li>🔥 Create memories you&apos;ll never forget</li>
-      </ul> */}
       <Suspense fallback={<Spinner />}>
         <CarsList />
       </Suspense>
