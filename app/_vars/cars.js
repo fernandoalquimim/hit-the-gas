@@ -15,14 +15,14 @@ const cars = [
   { image: car1, classes: "object-cover object-right" },
   { image: car2, classes: "object-cover object-center" },
   { image: car3 },
-  { image: car4 },
+  { image: car4, classes: "object-cover object-center" },
   { image: car5 },
-  { image: car6 },
+  { image: car6, classes: "object-cover object-center" },
   { image: car7, classes: "object-cover object-center" },
   { image: car8, classes: "object-cover object-bottom" },
   { image: car9 },
   { image: car10 },
-  { image: car11, classes: "object-cover object-bottom" },
+  { image: car11, classes: "object-cover object-center" },
   { image: car12 },
 ];
 
