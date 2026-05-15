@@ -3,7 +3,7 @@ import slidingMessages from "../_vars/slidingMessages";
 function TextSlide() {
   return (
     <div className="messages-scroller">
-      <div className="messages-scroller-inner text-primary-1150">
+      <div className="messages-scroller-inner text-primary-1150 text-stroke-smooth">
         {slidingMessages.map((m, i) => (
           <span key={i}>{m}</span>
         ))}
