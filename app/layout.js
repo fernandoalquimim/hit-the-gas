@@ -1,18 +1,12 @@
-import { Josefin_Sans, Rubik } from "next/font/google";
+import { Rubik } from "next/font/google";
 
 import "@/app/_styles/global.css";
 
 import Header from "./_components/Header";
 
-const josefin = Josefin_Sans({
-  subsets: ["latin"],
-  display: "swap",
-});
-
 const rubik = Rubik({
   subsets: ["latin"],
   display: "swap",
-  // weight: "900",
   variable: "--font-rubik",
 });
 
@@ -29,7 +23,7 @@ function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${josefin.className} ${rubik.variable} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
+        className={`${rubik.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
       >
         <Header />
         <div className="flex-1 grid">{children}</div>

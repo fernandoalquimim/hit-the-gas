@@ -33,7 +33,6 @@ function Page() {
           </Link>
         </div>
       </div>
-      {/* <footer className="absolute bottom-6 z-10 left-1/2 -translate-x-1/2 max-h-10"> */}
       <footer className="absolute bottom-6 z-10 left-1/2 -translate-x-1/2">
         <div className="hidden lg:flex justify-center items-center">
           <TextSlide />

@@ -91,7 +91,6 @@
 
 .rubik-upper-shadow {
   text-transform: uppercase;
-  font-family: var(--font-rubik), sans-serif;
   font-weight: 900;
   color: #e4e5e6;
 
@@ -145,7 +144,6 @@
   height: var(--item-height);
   line-height: var(--item-height);
   overflow: hidden;
-  font-family: var(--font-rubik), sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 24px;
