@@ -2,10 +2,12 @@ import Link from "next/link";
 
 import Slideshow from "./_components/Slideshow";
 import TextSlide from "./_components/TextSlide";
+import Overlay from "./_components/Overlay";
 
 function Page() {
   return (
     <div className="flex-1 grid relative">
+      <Overlay />
       <Slideshow />
       <div className="absolute z-10 place-self-center text-center flex flex-col items-center gap-4 -mt-72 sliding-div">
         <div>
@@ -27,7 +29,7 @@ function Page() {
         <div className="mt-8">
           <Link
             href="/cars"
-            className="bg-accent-500 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-accent-600 transition-all"
+            className="bg-primary-1450 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-1550 transition-all"
           >
             Explore iconic supercars
           </Link>

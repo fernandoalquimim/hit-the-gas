@@ -8,13 +8,11 @@ import car7 from "@/public/7.jpg";
 import car8 from "@/public/8.jpg";
 import car9 from "@/public/9.jpg";
 import car10 from "@/public/10.jpg";
-import car11 from "@/public/11.jpg";
-import car12 from "@/public/12.jpg";
 
 const cars = [
-  { image: car1, classes: "object-cover object-right" },
+  { image: car1 },
   { image: car2, classes: "object-cover object-center" },
-  { image: car3 },
+  { image: car3, classes: "object-cover object-top" },
   { image: car4, classes: "object-cover object-center" },
   { image: car5 },
   { image: car6, classes: "object-cover object-center" },
@@ -22,8 +20,6 @@ const cars = [
   { image: car8, classes: "object-cover object-bottom" },
   { image: car9 },
   { image: car10 },
-  { image: car11, classes: "object-cover object-center" },
-  { image: car12 },
 ];
 
 export default cars;

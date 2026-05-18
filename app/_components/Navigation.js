@@ -5,10 +5,13 @@ async function Navigation() {
   const session = await auth();
 
   return (
-    <nav className="z-10 text-xl px-4 py-1.5 text-[#f2f6f7] text-stroke">
+    <nav className="z-10 text-xl px-4 py-1.5 text-white">
       <ul className="flex gap-16 items-center">
         <li>
-          <Link href="/cars" className="hover:text-gray-300 transition-colors">
+          <Link
+            href="/cars"
+            className="hover:text-primary-1450 transition-colors"
+          >
             Cars
           </Link>
         </li>
@@ -16,7 +19,7 @@ async function Navigation() {
           {session?.user?.image ? (
             <Link
               href="/account"
-              className="hover:text-gray-300 transition-colors flex items-center gap-4"
+              className="hover:text-primary-1450 transition-colors flex items-center gap-4"
             >
               <img
                 className="h-8 rounded-full"
@@ -29,7 +32,7 @@ async function Navigation() {
           ) : (
             <Link
               href="/login"
-              className="hover:text-gray-300 transition-colors"
+              className="hover:text-primary-1450 transition-colors"
             >
               Guest area
             </Link>
