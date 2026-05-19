@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 
 import SlideImage from "./SlideImage";
-import cars from "@/app/_vars/cars";
+import cars from "@/app/_utils/constants/cars";
 
 function SlideShow() {
   return (

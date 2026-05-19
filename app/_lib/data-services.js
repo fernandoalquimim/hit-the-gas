@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { supabase } from "./supabase";
 
 export async function getClient(email) {
@@ -24,6 +25,23 @@ export async function getCars() {
     .select("id, name, maxCapacity, discount, image");
 
   if (error) throw new Error("Cars could not be loaded");
+
+  return data;
+}
+
+export async function getCar(id) {
+  const { data, error } = await supabase
+    .from("cars")
+    .select(
+      "id,created_at,name,description,cc,hp,maxSpeed,acc,maxCapacity,discount,image",
+    )
+    .eq("id", id)
+    .single();
+
+  // For testing
+  // await new Promise((res) => setTimeout(res, 1000));
+
+  if (error) notFound();
 
   return data;
 }

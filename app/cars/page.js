@@ -4,6 +4,10 @@ import Main from "@/app/_components/Main";
 import CarsList from "@/app/_components/CarsList";
 import Spinner from "@/app/_components/Spinner";
 
+export const metadata = {
+  title: "Cars",
+};
+
 function Page() {
   return (
     <Main>

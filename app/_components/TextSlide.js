@@ -1,4 +1,4 @@
-import slidingMessages from "../_vars/slidingMessages";
+import slidingMessages from "../_utils/constants/slidingMessages";
 
 function TextSlide() {
   return (
