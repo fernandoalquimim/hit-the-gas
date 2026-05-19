@@ -125,13 +125,13 @@
 }
 
 .sliding-div {
-  animation: slide-div-up 0.75s;
+  animation: slide-div-up 0.5s;
 }
 
 @keyframes slide-div-up {
   from {
     opacity: 0;
-    padding-top: 10rem;
+    padding-top: 3rem;
   }
   to {
     opacity: 100%;
