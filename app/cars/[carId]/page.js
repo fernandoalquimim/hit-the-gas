@@ -19,8 +19,6 @@ export async function generateStaticParams() {
 async function Page({ params }) {
   const car = await getCar(params.carId);
 
-  console.log(car.acc);
-
   return (
     <Main>
       <div className="max-w-6xl mx-auto mt-8">
