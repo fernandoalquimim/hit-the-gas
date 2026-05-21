@@ -1,7 +1,10 @@
-import { getCar, getCars } from "@/app/_lib/data-services";
+import { Suspense } from "react";
 
+import { getCar, getCars } from "@/app/_lib/data-services";
 import Main from "@/app/_components/Main";
 import Car from "@/app/_components/Car";
+import Reservation from "@/app/_components/Reservation";
+import Spinner from "@/app/_components/Spinner";
 
 export async function generateMetadata({ params }) {
   const { name } = await getCar(params.carId);
@@ -29,6 +32,10 @@ async function Page({ params }) {
             Reserve now. Pay once you get into the store.
           </h2>
         </div>
+
+        <Suspense fallback={<Spinner />}>
+          <Reservation />
+        </Suspense>
       </div>
     </Main>
   );

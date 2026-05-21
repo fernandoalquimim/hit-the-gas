@@ -222,3 +222,17 @@
     -2px 2px 0 rgba(0, 0, 0, 0.1),
     2px 2px 0 rgba(0, 0, 0, 0.1);
 }
+
+/* For data picker */
+.rdp-root {
+  --rdp-accent-color: theme("colors.accent.500") !important;
+  --rdp-accent-background-color: var(--rdp-accent-color) !important;
+
+  --rdp-day-width: 32px !important;
+  --rdp-day-height: 32px !important;
+
+  --rdp-day_button-width: 32px !important;
+  --rdp-day_button-height: 32px !important;
+
+  --rdp-selected-border: 2px solid var(--rdp-accent-color) !important;
+}
