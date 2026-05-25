@@ -33,7 +33,7 @@ export async function getCar(id) {
   const { data, error } = await supabase
     .from("cars")
     .select(
-      "id,created_at,name,description,cc,hp,maxSpeed,acc,maxCapacity,discount,image",
+      "id,created_at,name,description,cc,hp,maxSpeed,acc,maxCapacity,regularPrice,discount,image",
     )
     .eq("id", id)
     .single();

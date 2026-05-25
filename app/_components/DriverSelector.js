@@ -12,11 +12,13 @@ function DriverSelector() {
   return (
     <label className="driver-checkbox-container">
       <div className="flex justify-around items-center space-x-5 shadow w-full border border-primary-800 has-checked:ring-[#5fa212] has-checked:ring-2 bg-primary-950 px-6 rounded-md mb-10">
-        <div class="flex items-center space-x-5">
-          <div class="flex items-center relative w-32 h-32">
+        <div className="flex items-center space-x-5">
+          <div className="flex items-center relative w-32 h-32">
             <Image src={pilot} fill className="object-cover" alt="pilot" />
           </div>
-          <h2 class="text-3xl">I want an expert driver to take the wheel</h2>
+          <h2 className="text-3xl">
+            I want an expert driver to take the wheel
+          </h2>
         </div>
         <input
           type="checkbox"

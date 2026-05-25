@@ -9,7 +9,7 @@ async function Reservation({ car }) {
     <>
       <DriverSelector />
       <div className="grid grid-cols-2 border border-primary-800">
-        <DateSelector settings={settings} />
+        <DateSelector settings={settings} car={car} />
       </div>
     </>
   );
