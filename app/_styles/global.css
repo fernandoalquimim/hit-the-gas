@@ -236,3 +236,34 @@
 
   --rdp-selected-border: 2px solid var(--rdp-accent-color) !important;
 }
+
+.driver-checkbox-container {
+  cursor: pointer;
+}
+
+.driver-checkbox-container input {
+  display: none;
+}
+
+.driver-checkbox-container svg {
+  overflow: visible;
+}
+
+.driver-checkbox-path {
+  fill: none;
+  stroke: #2c3d4f;
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition:
+    stroke-dasharray 0.5s ease,
+    stroke-dashoffset 0.5s ease;
+  stroke-dasharray: 241 9999999;
+  stroke-dashoffset: 0;
+}
+
+.driver-checkbox-container input:checked ~ svg .driver-checkbox-path {
+  stroke: #5fa212;
+  stroke-dasharray: 70.5096664428711 9999999;
+  stroke-dashoffset: -262.2723388671875;
+}
