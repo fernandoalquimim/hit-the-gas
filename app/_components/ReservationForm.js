@@ -7,13 +7,12 @@ import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ user, car }) {
-  const { hasDriver, range, resetRange } = useReservation();
+  const { hasDriver, range, resetRange, numDays } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = car;
 
   const startDate = range?.from;
   const endDate = range?.to;
   const bookingMaxCapacity = hasDriver ? maxCapacity - 1 : maxCapacity;
-  const numDays = hasDriver ? 1 : differenceInDays(endDate, startDate);
   const carPrice = regularPrice - discount;
 
   const bookingData = {
@@ -83,7 +82,7 @@ function ReservationForm({ user, car }) {
         </div>
 
         <div className="flex justify-end items-center gap-6">
-          {!(startDate && endDate) ? (
+          {!(startDate && endDate && numDays) ? (
             <p className="text-primary-300 text-base h-15 leading-15">
               Start by selecting dates
             </p>

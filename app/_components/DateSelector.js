@@ -2,32 +2,42 @@
 
 import { useEffect, useState } from "react";
 import { DayPicker } from "react-day-picker";
-import { differenceInDays, isPast } from "date-fns";
+import {
+  differenceInDays,
+  isPast,
+  isSameDay,
+  isWithinInterval,
+} from "date-fns";
 
 import { useReservation } from "./ReservationContext";
 
 import "react-day-picker/dist/style.css";
 
-function DateSelector({ settings, car }) {
-  const { range, setRange, resetRange, hasDriver } = useReservation();
+function isAlreadyBooked(range, datesArr) {
+  return (
+    range?.from &&
+    range?.to &&
+    datesArr.some((date) =>
+      isWithinInterval(date, { start: range.from, end: range.to }),
+    )
+  );
+}
+
+function DateSelector({ settings, car, bookedDates }) {
+  const { range, setRange, resetRange, hasDriver, numDays, setNumDays } =
+    useReservation();
   const [singleDate, setSingleDate] = useState(null);
 
   const { minBookingLength, maxBookingLength } = settings;
   const { regularPrice, discount } = car;
 
-  const displayRange = range;
-  const numDays = hasDriver
-    ? displayRange?.to
-      ? 1
-      : 0
-    : displayRange
-      ? differenceInDays(displayRange.to, displayRange.from)
-      : 0;
-  const carPrice = numDays * (regularPrice - discount);
+  const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
+  const carPrice = numDays * (regularPrice - discount);
   const selectorMode = hasDriver ? "single" : "range";
   const minBooking = hasDriver ? 1 : minBookingLength;
   const maxBooking = hasDriver ? 1 : maxBookingLength;
+
   const setSelectedDate = (value) => {
     if (hasDriver) {
       setSingleDate(value);
@@ -41,6 +51,18 @@ function DateSelector({ settings, car }) {
     resetRange();
     setSingleDate(null);
   }, [hasDriver]);
+
+  useEffect(() => {
+    setNumDays(
+      hasDriver
+        ? displayRange?.to
+          ? 1
+          : 0
+        : displayRange
+          ? differenceInDays(displayRange.to, displayRange.from)
+          : 0,
+    );
+  }, [hasDriver, displayRange]);
 
   return (
     <div className="flex flex-col justify-between">
@@ -57,9 +79,9 @@ function DateSelector({ settings, car }) {
         toYear={new Date().getFullYear() + 5}
         captionLayout="dropdown"
         numberOfMonths={2}
-        disabled={
-          (curDate) => isPast(curDate)
-          // || bookedDates.some((date) => isSameDay(date, curDate))
+        disabled={(curDate) =>
+          isPast(curDate) ||
+          bookedDates.some((date) => isSameDay(date, curDate))
         }
       />
 
