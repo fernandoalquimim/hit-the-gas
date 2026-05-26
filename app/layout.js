@@ -3,7 +3,6 @@ import { Rubik } from "next/font/google";
 import "@/app/_styles/global.css";
 
 import Header from "./_components/Header";
-import { ReservationContext } from "./_components/ReservationContext";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -27,9 +26,7 @@ function RootLayout({ children }) {
         className={`${rubik.className} antialiased bg-primary-950 text-primary-100 min-h-screen flex flex-col relative`}
       >
         <Header />
-        <div className="flex-1 grid">
-          <ReservationContext>{children}</ReservationContext>
-        </div>
+        <div className="flex-1 grid">{children}</div>
       </body>
     </html>
   );

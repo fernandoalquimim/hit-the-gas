@@ -1,5 +1,6 @@
 import { auth } from "@/app/_lib/auth";
 import { getBookedDatesByCarId, getSettings } from "@/app/_lib/data-services";
+import { ReservationContext } from "./ReservationContext";
 import DateSelector from "./DateSelector";
 import DriverSelector from "./DriverSelector";
 import LoginMessage from "./LoginMessage";
@@ -13,7 +14,7 @@ async function Reservation({ car }) {
   ]);
 
   return (
-    <>
+    <ReservationContext>
       <DriverSelector />
       <div className="grid grid-cols-2 border border-primary-800">
         <DateSelector settings={settings} car={car} bookedDates={bookedDates} />
@@ -23,7 +24,7 @@ async function Reservation({ car }) {
           <LoginMessage />
         )}
       </div>
-    </>
+    </ReservationContext>
   );
 }
 
