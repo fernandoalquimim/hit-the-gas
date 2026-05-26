@@ -34,7 +34,7 @@ async function Navigation() {
               href="/login"
               className="hover:text-primary-1450 transition-colors"
             >
-              Guest area
+              Client area
             </Link>
           )}
         </li>

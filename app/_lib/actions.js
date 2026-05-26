@@ -21,7 +21,7 @@ export async function createBooking(bookingData, formData) {
 
   const newBooking = {
     ...bookingData,
-    clientId: session.user.guestId,
+    clientId: session.user.clientId,
     numPeople: Number(data.numPeople),
     observations: data.observations.slice(0, 1000),
     extrasPrice: 0,

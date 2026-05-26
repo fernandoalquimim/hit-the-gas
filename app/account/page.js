@@ -2,7 +2,7 @@ import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
 
 export const metadata = {
-  title: "Guest area",
+  title: "Client area",
 };
 
 export default async function Page() {
