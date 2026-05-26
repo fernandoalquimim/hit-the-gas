@@ -101,3 +101,9 @@ export async function getBookings(clientId) {
 
   return data;
 }
+
+export async function deleteBooking(id) {
+  const { error } = await supabase.from("bookings").delete().eq("id", id);
+
+  if (error) throw new Error("Booking could not be deleted");
+}
