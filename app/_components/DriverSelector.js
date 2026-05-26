@@ -16,9 +16,14 @@ function DriverSelector() {
           <div className="flex items-center relative w-32 h-32">
             <Image src={pilot} fill className="object-cover" alt="pilot" />
           </div>
-          <h2 className="text-3xl">
-            I want an expert driver to take the wheel
-          </h2>
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl">
+              I want an expert driver to take the wheel
+            </h2>
+            <h4 className="text-primary-600">
+              You can only book this car with a driver for the day selected
+            </h4>
+          </div>
         </div>
         <input
           type="checkbox"

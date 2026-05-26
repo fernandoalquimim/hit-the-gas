@@ -46,7 +46,7 @@ function DateSelector({ settings, car }) {
     <div className="flex flex-col justify-between">
       <DayPicker
         className="pt-12"
-        classNames={{ months: "flex flex-row gap-12 mx-6 h-72" }}
+        classNames={{ months: "flex flex-row gap-12 mx-6 min-h-72" }}
         mode={selectorMode}
         selected={hasDriver ? singleDate : displayRange}
         onSelect={setSelectedDate}
