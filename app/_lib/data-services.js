@@ -87,3 +87,17 @@ export async function getBookedDatesByCarId(carId) {
 
   return bookedDates;
 }
+
+export async function getBookings(clientId) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select(
+      "id, created_at, startDate, endDate, numDays, numPeople, totalPrice, clientId, carId, status, cars(name, image)",
+    )
+    .eq("clientId", clientId)
+    .order("startDate");
+
+  if (error) throw new Error("Bookings could not get loaded");
+
+  return data;
+}

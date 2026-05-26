@@ -1,0 +1,33 @@
+import { auth } from "@/app/_lib/auth";
+import { getBookings } from "@/app/_lib/data-services";
+import ReservationList from "@/app/_components/ReservationList";
+
+export const metadata = {
+  title: "Reservations",
+};
+
+async function Page() {
+  const session = await auth();
+  const bookings = await getBookings(session.user.clientId);
+
+  return (
+    <div>
+      <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+        Your reservations
+      </h2>
+
+      {!bookings?.length ? (
+        <p className="text-lg">
+          You have no reservations yet. Check out our{" "}
+          <a className="underline text-accent-500" href="/cars">
+            amazing cars &rarr;
+          </a>
+        </p>
+      ) : (
+        <ReservationList bookings={bookings} />
+      )}
+    </div>
+  );
+}
+
+export default Page;
