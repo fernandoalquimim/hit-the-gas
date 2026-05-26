@@ -15,6 +15,11 @@ function ReservationContext({ children }) {
   const [numDays, setNumDays] = useState(0);
 
   const resetRange = () => setRange(initialState);
+  const resetAllStates = () => {
+    resetRange();
+    setHasDriver(false);
+    setNumDays(0);
+  };
 
   return (
     <reservationContext.Provider
@@ -26,6 +31,7 @@ function ReservationContext({ children }) {
         setHasDriver,
         numDays,
         setNumDays,
+        resetAllStates,
       }}
     >
       {children}

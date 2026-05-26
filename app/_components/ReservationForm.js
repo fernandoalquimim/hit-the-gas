@@ -7,7 +7,7 @@ import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ user, car }) {
-  const { hasDriver, range, resetRange, numDays } = useReservation();
+  const { hasDriver, range, resetAllStates, numDays } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = car;
 
   const startDate = range?.from;
@@ -44,7 +44,7 @@ function ReservationForm({ user, car }) {
       <form
         action={async (formData) => {
           await createBookingWithDataBound(formData);
-          resetRange();
+          resetAllStates();
         }}
         className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col grow h-full"
       >
