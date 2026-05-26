@@ -98,7 +98,7 @@ function DateSelector({ settings, car, bookedDates }) {
             ) : (
               <span className="text-2xl">${regularPrice}</span>
             )}
-            <span className="">/day</span>
+            <span className="">/ day</span>
           </p>
           {numDays ? (
             <>
