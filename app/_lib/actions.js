@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { createBooking as createBookingSPB } from "./data-services";
+import { redirect } from "next/navigation";
 
 export async function signInAction() {
   await signIn("google", { redirectTo: "/account" });
@@ -34,4 +35,6 @@ export async function createBooking(bookingData, formData) {
   await createBookingSPB(newBooking);
 
   revalidatePath(`/cars/${bookingData.carId}`);
+
+  redirect("/cars/thank-you");
 }
