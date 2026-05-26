@@ -21,7 +21,7 @@ function DriverSelector() {
               I want an expert driver to take the wheel
             </h2>
             <h4 className="text-primary-600">
-              You can only book this car with a driver for the day selected
+              You can make a reservation with a driver only for the day selected
             </h4>
           </div>
         </div>
