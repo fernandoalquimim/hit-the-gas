@@ -5,9 +5,10 @@ import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
 import ClientInfo from "./ClientInfo";
 
-function ReservationForm({ user, car }) {
+function ReservationForm({ user, car, booking }) {
   const { hasDriver, range, resetAllStates, numDays } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = car;
+  const { numPeople, observations } = booking || {};
 
   const startDate = range?.from;
   const endDate = range?.to;
@@ -45,6 +46,7 @@ function ReservationForm({ user, car }) {
             id="numPeople"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             required
+            defaultValue={numPeople}
           >
             <option value="" key="">
               Select number of people...
@@ -68,6 +70,7 @@ function ReservationForm({ user, car }) {
             id="observations"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             placeholder="Special requirements, etc.?"
+            defaultValue={observations}
           />
         </div>
 

@@ -40,7 +40,7 @@ async function Reservation({ car, booking }) {
             booking={booking}
           />
           {session?.user ? (
-            <ReservationForm user={session.user} car={car} />
+            <ReservationForm user={session.user} car={car} booking={booking} />
           ) : (
             <LoginMessage />
           )}
