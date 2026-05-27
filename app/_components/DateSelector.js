@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import {
   differenceInDays,
@@ -23,10 +23,18 @@ function isAlreadyBooked(range, datesArr) {
   );
 }
 
-function DateSelector({ settings, car, bookedDates }) {
-  const { range, setRange, resetRange, hasDriver, numDays, setNumDays } =
-    useReservation();
-  const [singleDate, setSingleDate] = useState(null);
+function DateSelector({ settings, car, bookedDates, booking }) {
+  const {
+    range,
+    setRange,
+    resetRange,
+    singleDate,
+    setSingleDate,
+    hasDriver,
+    setHasDriver,
+    numDays,
+    setNumDays,
+  } = useReservation();
 
   const { minBookingLength, maxBookingLength } = settings;
   const { regularPrice, discount } = car;
@@ -48,9 +56,22 @@ function DateSelector({ settings, car, bookedDates }) {
   };
 
   useEffect(() => {
-    resetRange();
-    setSingleDate(null);
-  }, [hasDriver]);
+    if (booking) {
+      setHasDriver(booking.hasDriver);
+      if (booking.hasDriver) {
+        setSingleDate(booking.startDate);
+        setRange({
+          from: new Date(booking.startDate),
+          to: new Date(booking.startDate),
+        });
+      } else {
+        setRange({
+          from: new Date(booking.startDate),
+          to: new Date(booking.endDate),
+        });
+      }
+    }
+  }, []);
 
   useEffect(() => {
     setNumDays(

@@ -7,7 +7,8 @@ import { useReservation } from "./ReservationContext";
 import pilot from "@/public/driver.png";
 
 function DriverSelector() {
-  const { hasDriver, setHasDriver } = useReservation();
+  const { hasDriver, setHasDriver, resetRange, setSingleDate } =
+    useReservation();
 
   return (
     <label className="driver-checkbox-container">
@@ -29,6 +30,10 @@ function DriverSelector() {
           type="checkbox"
           checked={hasDriver}
           onChange={() => setHasDriver((h) => !h)}
+          onClick={() => {
+            resetRange();
+            setSingleDate(null);
+          }}
         />
         <svg viewBox="0 0 64 64" className="h-8 w-8">
           <path

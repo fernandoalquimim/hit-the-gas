@@ -2,12 +2,8 @@ import Reservation from "@/app/_components/Reservation";
 import { getBooking, getCar } from "@/app/_lib/data-services";
 
 async function Page({ params }) {
-  const {
-    id: reservationId,
-    carId,
-    numPeople,
-    observations,
-  } = await getBooking(params.bookingId);
+  const booking = await getBooking(params.bookingId);
+  const { id: reservationId, carId } = booking;
   const car = await getCar(carId);
 
   return (
@@ -16,7 +12,7 @@ async function Page({ params }) {
         Edit Reservation #{reservationId}
       </h2>
 
-      <Reservation car={car} />
+      <Reservation car={car} booking={booking} />
     </div>
   );
 }
