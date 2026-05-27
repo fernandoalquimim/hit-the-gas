@@ -62,6 +62,19 @@ export async function createBooking(newBooking) {
   if (error) throw new Error("Booking could not be created");
 }
 
+export async function updateBooking(id, updatedFields) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .update(updatedFields)
+    .eq("id", id)
+    .select()
+    .single();
+
+  if (error) throw new Error("Booking could not be updated");
+
+  return data;
+}
+
 export async function getBookedDatesByCarId(carId) {
   let today = new Date();
   today.setUTCHours(0, 0, 0, 0);

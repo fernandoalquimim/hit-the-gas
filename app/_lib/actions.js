@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import {
   createBooking as createBookingSPB,
+  updateBooking as updateBookingSPB,
   deleteBooking as deleteBookingSPB,
   getBookings,
 } from "./data-services";
@@ -41,6 +42,37 @@ export async function createBooking(bookingData, formData) {
   revalidatePath(`/cars/${bookingData.carId}`);
 
   redirect("/cars/thank-you");
+}
+
+export async function updateBooking(bookingData, formData) {
+  const session = await auth();
+  if (!session) throw new Error("You must be logged in");
+
+  const bookingId = Number(formData.get("id"));
+  const numPeople = Number(formData.get("numPeople"));
+  const observations = formData.get("observations").slice(0, 1000);
+
+  const clientBookings = await getBookings(session.user.clientId);
+  const clientBookingsIds = clientBookings.map((b) => b.id);
+  if (!clientBookingsIds.includes(bookingId))
+    throw new Error("You are only allowed to update the bookings you did");
+
+  const newBooking = {
+    ...bookingData,
+    numPeople,
+    observations,
+    extrasPrice: 0,
+    totalPrice: bookingData.numDays * bookingData.carPrice,
+    isPaid: false,
+    status: "unconfirmed",
+  };
+
+  await updateBookingSPB(bookingId, newBooking);
+
+  revalidatePath("/account/reservations");
+  revalidatePath(`/account/reservations/edit/${bookingId}`);
+
+  redirect("/account/reservations");
 }
 
 export async function deleteReservation(bookingId) {

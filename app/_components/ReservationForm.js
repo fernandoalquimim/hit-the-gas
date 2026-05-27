@@ -1,6 +1,6 @@
 "use client";
 
-import { createBooking } from "@/app/_lib/actions";
+import { createBooking, updateBooking } from "@/app/_lib/actions";
 import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
 import ClientInfo from "./ClientInfo";
@@ -8,7 +8,7 @@ import ClientInfo from "./ClientInfo";
 function ReservationForm({ user, car, booking }) {
   const { hasDriver, range, resetAllStates, numDays } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = car;
-  const { numPeople, observations } = booking || {};
+  const { id: bookingId, numPeople, observations } = booking || {};
 
   const startDate = range?.from;
   const endDate = range?.to;
@@ -21,10 +21,13 @@ function ReservationForm({ user, car, booking }) {
     numDays,
     carPrice,
     hasDriver,
-    carId: id,
   };
 
-  const createBookingWithDataBound = createBooking.bind(null, bookingData);
+  const createBookingWithDataBound = createBooking.bind(null, {
+    ...bookingData,
+    carId: id,
+  });
+  const editBookingWithDataBound = updateBooking.bind(null, bookingData);
 
   return (
     <div className="flex flex-col">
@@ -34,11 +37,17 @@ function ReservationForm({ user, car, booking }) {
 
       <form
         action={async (formData) => {
-          await createBookingWithDataBound(formData);
+          if (!booking) {
+            await createBookingWithDataBound(formData);
+          } else {
+            await editBookingWithDataBound(formData);
+          }
           resetAllStates();
         }}
         className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col grow h-full"
       >
+        {booking && <input type="hidden" name="id" value={bookingId} />}
+
         <div className="space-y-2">
           <label htmlFor="numPeople">How many people?</label>
           <select
