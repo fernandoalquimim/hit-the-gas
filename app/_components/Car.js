@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import Image from "next/image";
 import {
   UsersIcon,
@@ -6,12 +7,14 @@ import {
   FireIcon,
   ChartBarIcon,
   ClockIcon,
+  CalendarIcon,
+  CalendarDaysIcon,
 } from "@heroicons/react/24/solid";
 
-import TextExpander from "./TextExpander";
 import { formatCurrency } from "@/app/_utils/helpers";
+import TextExpander from "./TextExpander";
 
-function Car({ car }) {
+function Car({ car, booking }) {
   const {
     name,
     description,
@@ -24,6 +27,9 @@ function Car({ car }) {
     acc,
   } = car;
 
+  const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
+    booking || {};
+
   return (
     <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
       <div className="relative scale-[1.15] -translate-x-3">
@@ -35,54 +41,112 @@ function Car({ car }) {
           {name}
         </h3>
 
-        <p className="text-lg text-primary-300 mb-10">
-          <TextExpander>{description}</TextExpander>
-        </p>
+        {!booking ? (
+          <>
+            <p className="text-lg text-primary-300 mb-10">
+              <TextExpander>{description}</TextExpander>
+            </p>
 
-        <ul className="grid grid-cols-2 gap-4 mb-7">
-          {discount > 0 && (
-            <li className="flex gap-3 items-center">
-              <CurrencyDollarIcon className="h-5 w-5 text-green-300" />
-              <span className="text-lg">
-                <span className="font-bold text-green-300">
-                  Discount of {formatCurrency(discount)}
+            <ul className="grid grid-cols-2 gap-4 mb-7">
+              {discount > 0 && (
+                <li className="flex gap-3 items-center">
+                  <CurrencyDollarIcon className="h-5 w-5 text-green-300" />
+                  <span className="text-lg">
+                    <span className="font-bold text-green-300">
+                      Discount of {formatCurrency(discount)}
+                    </span>
+                  </span>
+                </li>
+              )}
+              <li className="flex gap-3 items-center">
+                <UsersIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  For up to <span className="font-bold">{maxCapacity}</span>{" "}
+                  people
                 </span>
-              </span>
-            </li>
-          )}
-          <li className="flex gap-3 items-center">
-            <UsersIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              For up to <span className="font-bold">{maxCapacity}</span> people
-            </span>
-          </li>
-          <li className="flex gap-3 items-center">
-            <ChartBarIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              Max speed: <span className="font-bold">{maxSpeed}</span> km/h
-            </span>
-          </li>
+              </li>
+              <li className="flex gap-3 items-center">
+                <ChartBarIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  Max speed: <span className="font-bold">{maxSpeed}</span> km/h
+                </span>
+              </li>
 
-          <li className="flex gap-3 items-center">
-            <BoltIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              <span className="font-bold">{hp}</span> horsepower
-            </span>
-          </li>
-          <li className="flex gap-3 items-center">
-            <FireIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              Displacement: <span className="font-bold">{cc.toFixed(1)}</span>{" "}
-              cc
-            </span>
-          </li>
-          <li className="flex gap-3 items-center">
-            <ClockIcon className="h-5 w-5 text-primary-600" />
-            <span className="text-lg">
-              0-100 km/h: <span className="font-bold">{acc}</span> s
-            </span>
-          </li>
-        </ul>
+              <li className="flex gap-3 items-center">
+                <BoltIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  <span className="font-bold">{hp}</span> horsepower
+                </span>
+              </li>
+              <li className="flex gap-3 items-center">
+                <FireIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  Displacement:{" "}
+                  <span className="font-bold">{cc.toFixed(1)}</span> cc
+                </span>
+              </li>
+              <li className="flex gap-3 items-center">
+                <ClockIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  0-100 km/h: <span className="font-bold">{acc}</span> s
+                </span>
+              </li>
+            </ul>
+          </>
+        ) : (
+          <>
+            <ul className="grid grid-cols-2 gap-4 mb-7">
+              <li className="flex gap-3 items-center">
+                <UsersIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  For <span className="font-bold">{numPeople}</span>{" "}
+                  {numPeople === 1 ? "person" : "people"}{" "}
+                  {hasDriver && (
+                    <span className="text-accent-400">(+ driver)</span>
+                  )}
+                </span>
+              </li>
+
+              <li className="flex gap-3 items-center">
+                <CalendarIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  For <span className="font-bold">{numDays}</span> day
+                  {numDays > 1 && "s"}
+                </span>
+              </li>
+
+              <li className="flex gap-3 items-center">
+                <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
+                <span className="text-lg">
+                  {numDays > 1 ? "From " : "To "}
+                  <span className="font-bold">
+                    {format(new Date(startDate), "EEE, MMM dd yyyy")}
+                  </span>
+                </span>
+              </li>
+
+              {numDays > 1 && (
+                <li className="flex gap-3 items-center">
+                  <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    To{" "}
+                    <span className="font-bold">
+                      {format(new Date(endDate), "EEE, MMM dd yyyy")}
+                    </span>
+                  </span>
+                </li>
+              )}
+            </ul>
+            {observations && (
+              <>
+                <span className="text-lg">Observations:</span>
+                <p className="text-lg text-primary-300 mb-10">
+                  <TextExpander>{observations}</TextExpander>
+                </p>
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
