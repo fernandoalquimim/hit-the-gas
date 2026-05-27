@@ -102,6 +102,18 @@ export async function getBookings(clientId) {
   return data;
 }
 
+export async function getBooking(id) {
+  const { data, error } = await supabase
+    .from("bookings")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  if (error) throw new Error("Booking could not get loaded");
+
+  return data;
+}
+
 export async function deleteBooking(id) {
   const { error } = await supabase.from("bookings").delete().eq("id", id);
 

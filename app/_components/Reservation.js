@@ -15,14 +15,20 @@ async function Reservation({ car }) {
 
   return (
     <ReservationContext>
-      <DriverSelector />
-      <div className="grid grid-cols-2 border border-primary-800">
-        <DateSelector settings={settings} car={car} bookedDates={bookedDates} />
-        {session?.user ? (
-          <ReservationForm user={session.user} car={car} />
-        ) : (
-          <LoginMessage />
-        )}
+      <div className="@container">
+        <DriverSelector />
+        <div className="grid grid-cols-2 @max-[67rem]:grid-cols-1 border border-primary-800">
+          <DateSelector
+            settings={settings}
+            car={car}
+            bookedDates={bookedDates}
+          />
+          {session?.user ? (
+            <ReservationForm user={session.user} car={car} />
+          ) : (
+            <LoginMessage />
+          )}
+        </div>
       </div>
     </ReservationContext>
   );
