@@ -3,6 +3,7 @@
 import { createBooking } from "@/app/_lib/actions";
 import { useReservation } from "./ReservationContext";
 import SubmitButton from "./SubmitButton";
+import ClientInfo from "./ClientInfo";
 
 function ReservationForm({ user, car }) {
   const { hasDriver, range, resetAllStates, numDays } = useReservation();
@@ -26,17 +27,8 @@ function ReservationForm({ user, car }) {
 
   return (
     <div className="flex flex-col">
-      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center">
-        <p>Logged in as</p>
-        <div className="flex gap-4 items-center">
-          <img
-            referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
-            src={user.image}
-            alt={user.name}
-          />
-          <p>{user.name}</p>
-        </div>
+      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center @max-[67rem]:hidden">
+        <ClientInfo user={user} />
       </div>
 
       <form
@@ -89,6 +81,9 @@ function ReservationForm({ user, car }) {
           )}
         </div>
       </form>
+      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center @min-[67rem]:hidden">
+        <ClientInfo user={user} />
+      </div>
     </div>
   );
 }
