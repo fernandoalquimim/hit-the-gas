@@ -11,7 +11,7 @@ export default function Page() {
             Thank you for your reservation!
           </h1>
           <Link
-            href=""
+            href="/account/reservations"
             className="underline text-xl text-accent-500 inline-block"
           >
             Manage your reservations &rarr;
