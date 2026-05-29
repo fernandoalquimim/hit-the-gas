@@ -105,7 +105,7 @@ export async function getBookings(clientId) {
   const { data, error } = await supabase
     .from("bookings")
     .select(
-      "id, created_at, startDate, endDate, numDays, numPeople, totalPrice, clientId, carId, status, cars(name, image)",
+      "id, created_at, startDate, endDate, numDays, numPeople, hasDriver, totalPrice, clientId, carId, status, cars(name, image)",
     )
     .eq("clientId", clientId)
     .order("startDate");
