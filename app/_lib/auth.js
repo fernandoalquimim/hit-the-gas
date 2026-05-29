@@ -28,6 +28,7 @@ const authConfig = {
     async session({ session }) {
       const client = await getClient(session.user.email);
       session.user.clientId = client.id;
+      session.user.countryFlag = client.countryFlag;
       return session;
     },
   },
