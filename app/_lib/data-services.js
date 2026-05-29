@@ -132,3 +132,24 @@ export async function deleteBooking(id) {
 
   if (error) throw new Error("Booking could not be deleted");
 }
+
+export async function getCountries() {
+  try {
+    const res = await fetch(
+      "https://restcountries.com/v2/all?fields=name,flag",
+    );
+    const countries = await res.json();
+    return countries;
+  } catch {
+    throw new Error("Could not fetch countries");
+  }
+}
+
+export async function updateClient(id, updatedFields) {
+  const { error } = await supabase
+    .from("clients")
+    .update(updatedFields)
+    .eq("id", id);
+
+  if (error) throw new Error("Client could not be updated");
+}
