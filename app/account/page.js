@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth } from "@/app/_lib/auth";
+import { PencilIcon } from "@heroicons/react/24/solid";
 
 export const metadata = {
   title: "Client area",
@@ -19,6 +20,14 @@ export default async function Page() {
           src={session?.user?.image}
           alt={session?.user?.name}
         />
+        <div className="rounded-4xl text-primary-400 bg-primary-800 border border-primary-400 absolute top-0 right-0 hover:border-primary-200 hover:text-primary-200 cursor-pointer">
+          <Link
+            href="/account/profile"
+            className="flex justify-center items-center rounded-4xl h-13 w-13 "
+          >
+            <PencilIcon className="h-5 w-5" />
+          </Link>
+        </div>
         {countryFlag && (
           <img
             src={countryFlag}

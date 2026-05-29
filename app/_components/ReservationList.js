@@ -18,7 +18,7 @@ function ReservationList({ bookings }) {
   }
 
   return (
-    <ul className="space-y-6">
+    <ul className="space-y-6 sliding-div">
       {optimisticBookings.map((booking) => (
         <ReservationCard
           key={booking.id}

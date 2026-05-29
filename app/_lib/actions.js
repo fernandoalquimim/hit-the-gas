@@ -109,4 +109,7 @@ export async function updateClient(formData) {
   await updateClientSPB(session.user.clientId, updateData);
 
   revalidatePath("/account/profile");
+  revalidatePath("/account");
+
+  redirect("/account");
 }
