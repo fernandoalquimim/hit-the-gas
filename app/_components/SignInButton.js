@@ -8,7 +8,7 @@ function SignInButton() {
 
   return (
     <form action={() => signInAction(params.get("callbackUrl"))}>
-      <button className="flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium">
+      <button className="flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium cursor-pointer">
         <img
           src="https://authjs.dev/img/providers/google.svg"
           alt="Google logo"
