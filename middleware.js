@@ -17,5 +17,5 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ["/account", "/account/profile", "/account/reservations"],
+  matcher: ["/account/:path*"],
 };
