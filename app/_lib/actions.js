@@ -11,8 +11,8 @@ import {
 } from "./data-services";
 import { redirect } from "next/navigation";
 
-export async function signInAction() {
-  await signIn("google", { redirectTo: "/account" });
+export async function signInAction(callbackUrl) {
+  await signIn("google", { redirectTo: callbackUrl || "/account" });
 }
 
 export async function signOutAction() {
