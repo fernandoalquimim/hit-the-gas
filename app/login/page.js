@@ -1,4 +1,4 @@
-import SignInButton from "@/app/_components/SignInButton";
+import SignInForm from "@/app/_components/SignInForm";
 
 export const metadata = {
   title: "Login",
@@ -11,7 +11,7 @@ export default function Page() {
         Sign in to access your client area
       </h2>
 
-      <SignInButton />
+      <SignInForm />
     </div>
   );
 }

@@ -1,23 +1,29 @@
 "use client";
 
-import { signInAction } from "@/app/_lib/actions";
-import { useSearchParams } from "next/navigation";
+import { useFormStatus } from "react-dom";
+
+import SpinnerMini from "./SpinnerMini";
 
 function SignInButton() {
-  const params = useSearchParams();
+  const { pending } = useFormStatus();
 
   return (
-    <form action={() => signInAction(params.get("callbackUrl"))}>
-      <button className="flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium cursor-pointer hover:scale-110 transition-all duration-200">
+    <button
+      className={`flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium transition-all duration-200 ${!pending ? "cursor-pointer hover:scale-110" : "cursor-not-allowed"}`}
+      disabled={pending}
+    >
+      {!pending ? (
         <img
           src="https://authjs.dev/img/providers/google.svg"
           alt="Google logo"
           height="24"
           width="24"
         />
-        <span>Continue with Google</span>
-      </button>
-    </form>
+      ) : (
+        <SpinnerMini />
+      )}
+      <span>Continue with Google</span>
+    </button>
   );
 }
 
