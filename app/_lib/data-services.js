@@ -24,7 +24,9 @@ export async function createClient(newClient) {
 export async function getCars() {
   const { data, error } = await supabase
     .from("cars")
-    .select("id, name, maxCapacity, regularPrice, discount, image");
+    .select(
+      "id, name, maxCapacity, regularPrice, discount, image, brands(name,logo,dimensions)",
+    );
 
   if (error) throw new Error("Cars could not be loaded");
 
@@ -35,7 +37,7 @@ export async function getCar(id) {
   const { data, error } = await supabase
     .from("cars")
     .select(
-      "id,created_at,name,description,cc,hp,maxSpeed,acc,maxCapacity,regularPrice,discount,image",
+      "id,created_at,name,description,cc,hp,maxSpeed,acc,maxCapacity,regularPrice,discount,image,brands(name,logo,dimensions)",
     )
     .eq("id", id)
     .single();

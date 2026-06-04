@@ -25,13 +25,15 @@ function Car({ car, booking }) {
     cc,
     maxSpeed,
     acc,
+    brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
+  const [brandLogoWSize, brandLogoHSize] = brandDimensions.split("-");
 
   const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
     booking || {};
 
   return (
-    <div className="grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
+    <div className="relative grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
       <div className="relative scale-[1.15] -translate-x-3">
         <Image src={image} fill className="object-cover" alt={name} />
       </div>
@@ -40,6 +42,17 @@ function Car({ car, booking }) {
         <h3 className="text-accent-100 font-black text-7xl mb-5 -translate-x-63.5 bg-primary-950 p-6 pb-1 w-[150%]">
           {name}
         </h3>
+
+        <div
+          className={`absolute top-2 right-2 w-${brandLogoWSize} h-${brandLogoHSize}`}
+        >
+          <Image
+            src={brandLogo}
+            alt="logo"
+            fill
+            className="object-cover object-center"
+          />
+        </div>
 
         {!booking ? (
           <>

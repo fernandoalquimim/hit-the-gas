@@ -3,7 +3,16 @@ import { UsersIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 
 function CarCard({ car }) {
-  const { id, name, maxCapacity, regularPrice, discount, image } = car;
+  const {
+    id,
+    name,
+    maxCapacity,
+    regularPrice,
+    discount,
+    image,
+    brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
+  } = car;
+  const [brandLogoWSize, brandLogoHSize] = brandDimensions.split("-");
 
   return (
     <div className="flex border-primary-800 border">
@@ -17,7 +26,18 @@ function CarCard({ car }) {
       </div>
 
       <div className="grow">
-        <div className="pt-5 pb-4 px-7 bg-primary-950">
+        <div className="relative pt-5 pb-4 px-7 bg-primary-950">
+          <div
+            className={`absolute top-2 right-2 w-${brandLogoWSize} h-${brandLogoHSize}`}
+          >
+            <Image
+              src={brandLogo}
+              alt="logo"
+              fill
+              className="object-cover object-center"
+            />
+          </div>
+
           <h3 className="text-accent-500 font-semibold text-2xl mb-3">
             {name}
           </h3>
