@@ -12,7 +12,7 @@ function CarCard({ car }) {
     image,
     brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
-  const [brandLogoWSize, brandLogoHSize] = brandDimensions.split("-");
+  const [logoWidth, logoHeight] = brandDimensions.split("-");
 
   return (
     <div className="flex border-primary-800 border">
@@ -27,13 +27,12 @@ function CarCard({ car }) {
 
       <div className="grow">
         <div className="relative pt-5 pb-4 px-7 bg-primary-950">
-          <div
-            className={`absolute top-2 right-2 w-${brandLogoWSize} h-${brandLogoHSize}`}
-          >
+          <div className="absolute top-3 right-2">
             <Image
               src={brandLogo}
               alt="logo"
-              fill
+              width={logoWidth}
+              height={logoHeight}
               className="object-cover object-center"
             />
           </div>
