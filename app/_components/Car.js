@@ -27,7 +27,7 @@ function Car({ car, booking }) {
     acc,
     brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
-  const [brandLogoWSize, brandLogoHSize] = brandDimensions.split("-");
+  const [logoWidth, logoHeight] = brandDimensions.split("-");
 
   const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
     booking || {};
@@ -38,22 +38,28 @@ function Car({ car, booking }) {
         <Image src={image} fill className="object-cover" alt={name} />
       </div>
 
-      <div>
-        <h3 className="text-accent-100 font-black text-7xl mb-5 -translate-x-63.5 bg-primary-950 p-6 pb-1 w-[150%]">
-          {name}
-        </h3>
+      <div className="absolute top-3 right-2 z-50">
+        <Image
+          src={brandLogo}
+          alt="logo"
+          width={logoWidth}
+          height={logoHeight}
+          className="object-cover object-center"
+        />
+      </div>
 
+      <div className="pt-48">
         <div
-          className={`absolute top-2 right-2 w-${brandLogoWSize} h-${brandLogoHSize}`}
+          className="absolute top-8 right-0 flex flex-col max-w-3/4 w-full mb-5 bg-primary-950 p-6"
+          style={{ paddingRight: `${Number(logoWidth) + 16}px` }}
         >
-          <Image
-            src={brandLogo}
-            alt="logo"
-            fill
-            className="object-cover object-center"
-          />
+          <div className="text-7xl font-black text-accent-100 whitespace-nowrap overflow-hidden text-ellipsis">
+            {name}
+          </div>
+          <div className="text-3xl font-extrabold text-accent-400">
+            {brandName}
+          </div>
         </div>
-
         {!booking ? (
           <>
             <p className="text-lg text-primary-300 mb-10">
