@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { UsersIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
+import { UsersIcon } from "@heroicons/react/24/solid";
 
 function CarCard({ car }) {
   const {
@@ -25,8 +25,8 @@ function CarCard({ car }) {
         />
       </div>
 
-      <div className="grow">
-        <div className="relative pt-5 pb-4 px-7 bg-primary-950">
+      <div className="grow max-w-md">
+        <div className="relative pt-5 pb-4 pl-7 pr-3 bg-primary-950">
           <div className="absolute top-3 right-2">
             <Image
               src={brandLogo}
@@ -37,32 +37,35 @@ function CarCard({ car }) {
             />
           </div>
 
-          <h3 className="text-accent-500 font-semibold text-2xl mb-3">
-            {name}
-          </h3>
-
-          <div className="flex gap-3 items-center mb-2">
-            <UsersIcon className="h-5 w-5 text-primary-600" />
-            <p className="text-lg text-primary-200">
-              For up to <span className="font-bold">{maxCapacity}</span> people
-            </p>
+          <div style={{ paddingRight: `${logoWidth - 4}px` }} className="mb-6">
+            <h3 className="text-accent-500 font-semibold text-2xl ">{name}</h3>
+            <p className="text-xl text-accent-50">{brandName}</p>
           </div>
 
-          <p className="flex gap-3 justify-end items-baseline">
-            {discount > 0 ? (
-              <>
-                <span className="text-3xl font-[350] text-green-300">
-                  ${regularPrice - discount}
-                </span>
-                <span className="line-through font-semibold text-primary-600">
-                  ${regularPrice}
-                </span>
-              </>
-            ) : (
-              <span className="text-3xl font-[350]">${regularPrice}</span>
-            )}
-            <span className="text-primary-200">/ day</span>
-          </p>
+          <div className="flex justify-between">
+            <div className="flex gap-3 items-end">
+              <UsersIcon className="h-5 w-5 text-primary-600" />
+              <p className="text-lg text-primary-200">
+                For up to <span className="font-bold">{maxCapacity}</span>{" "}
+                people
+              </p>
+            </div>
+            <p className="flex gap-3 justify-end items-baseline">
+              {discount > 0 ? (
+                <>
+                  <span className="text-3xl font-[350] text-green-300">
+                    ${regularPrice - discount}
+                  </span>
+                  <span className="line-through font-semibold text-primary-600">
+                    ${regularPrice}
+                  </span>
+                </>
+              ) : (
+                <span className="text-3xl font-[350]">${regularPrice}</span>
+              )}
+              <span className="text-primary-200">/ day</span>
+            </p>
+          </div>
         </div>
 
         <div className="bg-primary-950 border-t border-t-primary-800 text-right">
