@@ -1,3 +1,5 @@
+"use client";
+
 import { format } from "date-fns";
 import Image from "next/image";
 import {
@@ -13,8 +15,10 @@ import {
 
 import { formatCurrency } from "@/app/_utils/helpers";
 import TextExpander from "./TextExpander";
+import Modal from "./Modal";
+import CarSlideShow from "./CarSlideShow";
 
-function Car({ car, booking }) {
+function Car({ car, images, booking }) {
   const {
     name,
     description,
@@ -34,8 +38,16 @@ function Car({ car, booking }) {
 
   return (
     <div className="relative grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
-      <div className="relative scale-[1.15] -translate-x-3">
-        <Image src={image} fill className="object-cover" alt={name} />
+      <div className="relative w-106 h-129 scale-[1.15] -translate-x-3 cursor-pointer">
+        <Modal>
+          <Modal.Open opens={"galery"}>
+            {/* <Image src={image} fill className="object-cover" alt={name} /> */}
+            <CarSlideShow images={images} />
+          </Modal.Open>
+          <Modal.Window name={"galery"}>
+            <h1>Galery</h1>
+          </Modal.Window>
+        </Modal>
       </div>
 
       <div className="absolute top-3 right-2 z-50">

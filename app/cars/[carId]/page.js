@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { getCar, getCars } from "@/app/_lib/data-services";
+import { getCar, getCarImages, getCars } from "@/app/_lib/data-services";
 import Main from "@/app/_components/Main";
 import Car from "@/app/_components/Car";
 import Reservation from "@/app/_components/Reservation";
@@ -21,11 +21,12 @@ export async function generateStaticParams() {
 
 async function Page({ params }) {
   const car = await getCar(params.carId);
+  const images = await getCarImages(car.id);
 
   return (
     <Main>
       <div className="max-w-6xl mx-auto mt-8">
-        <Car car={car} />
+        <Car car={car} images={images} />
 
         <div>
           <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">

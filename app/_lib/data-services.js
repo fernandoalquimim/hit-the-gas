@@ -155,3 +155,29 @@ export async function updateClient(id, updatedFields) {
 
   if (error) throw new Error("Client could not be updated");
 }
+
+export async function getCarImages(id) {
+  const { data, error } = await supabase.storage
+    .from("car-2")
+    .list(`car-${id}`, { limit: 10 });
+
+  if (error) {
+    throw new Error(`Images of car ${id} could not be loaded`);
+  }
+
+  const fileUrls = data.flatMap((file) => {
+    if (!file.metadata.mimetype.includes("image")) return [];
+
+    const filePath = `car-${id}/${file.name}`;
+
+    const { data: imageUrl, error: imageError } = supabase.storage
+      .from("car-2")
+      .getPublicUrl(filePath);
+
+    if (imageError) return [];
+
+    return [imageUrl.publicUrl];
+  });
+
+  return fileUrls;
+}

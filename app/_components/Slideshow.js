@@ -6,6 +6,8 @@ import { EffectFade, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
+import "@/app/_styles/slideShow.css";
+
 import SlideImage from "./SlideImage";
 import cars from "@/app/_utils/constants/cars";
 
