@@ -9,12 +9,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "@/app/_styles/carSlideShow.css";
 
-import Modal from "./Modal";
+import GaleryModal from "./Modals/Galery/GaleryModal";
 
 function Galery({ images }) {
   return (
-    <Modal>
-      <Modal.Open opens={"galery"}>
+    <GaleryModal>
+      <GaleryModal.Open opens={"galery"}>
         <Swiper
           navigation={true}
           pagination={{
@@ -33,9 +33,9 @@ function Galery({ images }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      </Modal.Open>
-      <Modal.Window name={"galery"}>
-        <div className="relative w-[80vmax] h-[80vmin] flex flex-col items-center">
+      </GaleryModal.Open>
+      <GaleryModal.Window name={"galery"}>
+        <div className="relative w-[80dvw] h-[80dvh] flex flex-col items-center">
           <Swiper
             navigation={true}
             pagination={{
@@ -62,8 +62,8 @@ function Galery({ images }) {
             ))}
           </Swiper>
         </div>
-      </Modal.Window>
-    </Modal>
+      </GaleryModal.Window>
+    </GaleryModal>
   );
 }
 
