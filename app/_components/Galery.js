@@ -35,7 +35,33 @@ function Galery({ images }) {
         </Swiper>
       </Modal.Open>
       <Modal.Window name={"galery"}>
-        <h1>Galery</h1>
+        <div className="relative w-[80vmax] h-[80vmin] flex flex-col items-center">
+          <Swiper
+            navigation={true}
+            pagination={{
+              dynamicBullets: true,
+            }}
+            modules={[Navigation, Pagination]}
+          >
+            {images.map((i) => (
+              <SwiperSlide>
+                <Image
+                  alt="car image"
+                  src={i}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  style={{
+                    width: "auto",
+                    height: "100%",
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </Modal.Window>
     </Modal>
   );
