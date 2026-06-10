@@ -57,6 +57,7 @@ function Galery({ images }) {
                     marginTop: "auto",
                     marginBottom: "auto",
                   }}
+                  className="keep-galery-open"
                 />
               </SwiperSlide>
             ))}
