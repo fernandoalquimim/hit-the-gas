@@ -1,7 +1,6 @@
-"use client";
-
-import { format } from "date-fns";
+import { Suspense } from "react";
 import Image from "next/image";
+import { format } from "date-fns";
 import {
   UsersIcon,
   CurrencyDollarIcon,
@@ -15,10 +14,9 @@ import {
 
 import { formatCurrency } from "@/app/_utils/helpers";
 import TextExpander from "./TextExpander";
-import Modal from "./Modal";
-import CarSlideShow from "./CarSlideShow";
+import CarGalery from "./CarGalery";
 
-function Car({ car, images, booking }) {
+function Car({ car, booking }) {
   const {
     name,
     description,
@@ -39,15 +37,13 @@ function Car({ car, images, booking }) {
   return (
     <div className="relative grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
       <div className="relative w-106 h-129 scale-[1.15] -translate-x-3 cursor-pointer">
-        <Modal>
-          <Modal.Open opens={"galery"}>
-            {/* <Image src={image} fill className="object-cover" alt={name} /> */}
-            <CarSlideShow images={images} />
-          </Modal.Open>
-          <Modal.Window name={"galery"}>
-            <h1>Galery</h1>
-          </Modal.Window>
-        </Modal>
+        <Suspense
+          fallback={
+            <Image src={image} fill className="object-cover" alt={name} />
+          }
+        >
+          <CarGalery car={car} />
+        </Suspense>
       </div>
 
       <div className="absolute top-3 right-2 z-50">
