@@ -28,3 +28,7 @@
 .swiper-button-disabled {
   display: none;
 }
+
+.swiper-pagination-bullet-active {
+  background: var(--color-accent-600);
+}
