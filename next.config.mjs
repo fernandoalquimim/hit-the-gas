@@ -6,12 +6,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "haozfkcitrytokyergca.supabase.co",
         port: "",
-        pathname: "/storage/v1/object/public/car-images/**",
-      },
-      {
-        protocol: "https",
-        hostname: "haozfkcitrytokyergca.supabase.co",
-        port: "",
         pathname: "/storage/v1/object/public/car-brand-logos/**",
       },
       {
