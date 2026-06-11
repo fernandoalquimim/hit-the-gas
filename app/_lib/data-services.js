@@ -157,8 +157,10 @@ export async function updateClient(id, updatedFields) {
 }
 
 export async function getCarImages(id) {
+  const bucketName = "galery";
+
   const { data, error } = await supabase.storage
-    .from("car-2")
+    .from(bucketName)
     .list(`car-${id}`, { limit: 10 });
 
   if (error) {
@@ -171,7 +173,7 @@ export async function getCarImages(id) {
     const filePath = `car-${id}/${file.name}`;
 
     const { data: imageUrl, error: imageError } = supabase.storage
-      .from("car-2")
+      .from(bucketName)
       .getPublicUrl(filePath);
 
     if (imageError) return [];

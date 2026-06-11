@@ -18,7 +18,7 @@ const nextConfig = {
         protocol: "https",
         hostname: "haozfkcitrytokyergca.supabase.co",
         port: "",
-        pathname: "/storage/v1/object/public/car-2/**/**",
+        pathname: "/storage/v1/object/public/galery/**/**",
       },
     ],
   },
