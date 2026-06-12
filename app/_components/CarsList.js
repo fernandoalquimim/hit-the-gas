@@ -7,7 +7,7 @@ async function CarsList() {
   if (!cars?.length) return null;
 
   return (
-    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 xl:gap-14 sliding-div">
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-8 lg:gap-12 lg:mb-12 xl:gap-14 xl:mb-14 sliding-div">
       {cars.map((car) => (
         <CarCard car={car} key={car.id} />
       ))}
