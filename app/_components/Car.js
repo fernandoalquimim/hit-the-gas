@@ -128,7 +128,7 @@ function Car({ car, booking }) {
           </>
         ) : (
           <>
-            <ul className="grid grid-cols-2 gap-4 mb-7">
+            <ul className="grid grid-cols-1 gap-4 mb-7">
               <li className="flex gap-3 items-center">
                 <UsersIcon className="h-5 w-5 text-primary-600" />
                 <span className="text-lg">

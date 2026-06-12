@@ -28,7 +28,7 @@ function Galery({ images }) {
                 alt="car image"
                 src={image}
                 fill
-                className="object-cover object-center cursor-pointer"
+                className="object-cover object-center cursor-pointer select-none"
               />
             </SwiperSlide>
           ))}
@@ -57,7 +57,7 @@ function Galery({ images }) {
                     marginTop: "auto",
                     marginBottom: "auto",
                   }}
-                  className="keep-galery-open"
+                  className="keep-galery-open select-none"
                 />
               </SwiperSlide>
             ))}
