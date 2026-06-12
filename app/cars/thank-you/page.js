@@ -5,7 +5,7 @@ import Main from "@/app/_components/Main";
 export default function Page() {
   return (
     <Main>
-      <div className="flex justify-center items-center h-full">
+      <div className="flex justify-center items-start h-full py-40">
         <div className="text-center space-y-6 mt-4">
           <h1 className="text-3xl font-semibold">
             Thank you for your reservation!
