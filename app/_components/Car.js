@@ -34,10 +34,12 @@ function Car({ car, booking }) {
   const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
     booking || {};
 
+  const editMode = !!booking;
+
   return (
     <div className="relative grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
       <div className="relative w-106 h-129 scale-[1.15] -translate-x-3">
-        {booking ? (
+        {editMode ? (
           <Image src={image} fill className="object-cover" alt={name} />
         ) : (
           <Suspense
@@ -72,7 +74,7 @@ function Car({ car, booking }) {
             {brandName}
           </div>
         </div>
-        {!booking ? (
+        {!editMode ? (
           <>
             <p className="text-lg text-primary-300 mb-10">
               <TextExpander>{description}</TextExpander>
