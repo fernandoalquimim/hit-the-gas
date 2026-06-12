@@ -10,7 +10,9 @@ async function CarGalery({ car }) {
   if (!images?.length)
     return <Image src={image} fill className="object-cover" alt="car image" />;
 
-  return <Galery images={images} />;
+  const displayImages = [image, ...images.filter((i) => i !== image)];
+
+  return <Galery images={displayImages} />;
 }
 
 export default CarGalery;
