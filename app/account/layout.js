@@ -9,7 +9,9 @@ export default function Layout({ children }) {
           <SideNavigation />
         </div>
 
-        <div className="h-full overflow-y-auto scrollbar-none">{children}</div>
+        <div className="h-full overflow-y-auto scrollbar-thin scrollbar-track-transparent scrollbar-thumb-primary-800">
+          {children}
+        </div>
       </div>
     </Main>
   );
