@@ -22,11 +22,11 @@ function Galery({ images }) {
           }}
           modules={[Navigation, Pagination]}
         >
-          {images.map((i) => (
-            <SwiperSlide>
+          {images.map((image, i) => (
+            <SwiperSlide key={i}>
               <Image
                 alt="car image"
-                src={i}
+                src={image}
                 fill
                 className="object-cover object-center cursor-pointer"
               />
@@ -43,11 +43,11 @@ function Galery({ images }) {
             }}
             modules={[Navigation, Pagination]}
           >
-            {images.map((i) => (
-              <SwiperSlide>
+            {images.map((image, i) => (
+              <SwiperSlide key={i}>
                 <Image
                   alt="car image"
-                  src={i}
+                  src={image}
                   width={0}
                   height={0}
                   sizes="100vw"
