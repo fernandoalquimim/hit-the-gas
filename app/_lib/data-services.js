@@ -161,7 +161,7 @@ export async function getCarImages(id) {
 
   const { data, error } = await supabase.storage
     .from(bucketName)
-    .list(`car-${id}`, { limit: 10 });
+    .list(`car-${id}`, { limit: 15 });
 
   if (error) {
     throw new Error(`Images of car ${id} could not be loaded`);
