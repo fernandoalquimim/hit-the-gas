@@ -1,12 +1,12 @@
 import { getManufacturers } from "@/app/_lib/data-services";
 import Selector from "./Selector";
 
-async function Manufacturer() {
+async function Manufacturer({ selected }) {
   const manufacturers = await getManufacturers();
 
   return (
     <div className="w-full h-20 mb-10">
-      <Selector manufacturers={manufacturers} />
+      <Selector manufacturers={manufacturers} selected={selected} />
     </div>
   );
 }

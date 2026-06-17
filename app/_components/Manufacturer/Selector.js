@@ -15,7 +15,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/solid";
 
-function Selector({ manufacturers }) {
+function Selector({ manufacturers, selected }) {
   const [displayManufacturers, setDisplayManufacturers] = useState([]);
   const [selectedIds, setSelectedIds] = useState([]);
 
@@ -53,6 +53,10 @@ function Selector({ manufacturers }) {
   useEffect(() => {
     setDisplayManufacturers(parseManufacturersArray(manufacturers));
   }, [manufacturers]);
+
+  useEffect(() => {
+    setSelectedIds(selected);
+  }, [selected]);
 
   return (
     <div className="flex flex-row justify-between">

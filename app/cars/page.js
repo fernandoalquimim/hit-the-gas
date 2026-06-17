@@ -32,7 +32,7 @@ function Page({ searchParams }) {
         </strong>
       </p>
 
-      <Manufacturer />
+      <Manufacturer selected={manufacturersIds} />
 
       <Suspense fallback={<Spinner />} key={manufacturersIds}>
         <CarsList manufacturersIds={manufacturersIds} />
