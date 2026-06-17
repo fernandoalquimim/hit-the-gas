@@ -11,3 +11,8 @@
 .swiper-button-disabled {
   display: none;
 }
+
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  height: 28px;
+}
