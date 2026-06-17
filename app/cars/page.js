@@ -3,12 +3,18 @@ import { Suspense } from "react";
 import Main from "@/app/_components/Main";
 import CarsList from "@/app/_components/CarsList";
 import Spinner from "@/app/_components/Spinner";
+import Manufacturer from "@/app/_components/Manufacturer/Manufacturer";
 
 export const metadata = {
   title: "Cars",
 };
 
-function Page() {
+function Page({ searchParams }) {
+  const filter = searchParams?.selected ?? [];
+  const manufacturersIds = Array.isArray(filter)
+    ? filter.map((f) => parseInt(f))
+    : [parseInt(filter)];
+
   return (
     <Main>
       <h1 className="text-4xl mb-3 text-accent-400 font-medium">
@@ -25,8 +31,11 @@ function Page() {
           Book your ultimate car adventure today and unleash the excitement!
         </strong>
       </p>
-      <Suspense fallback={<Spinner />}>
-        <CarsList />
+
+      <Manufacturer />
+
+      <Suspense fallback={<Spinner />} key={manufacturersIds}>
+        <CarsList manufacturersIds={manufacturersIds} />
       </Suspense>
     </Main>
   );

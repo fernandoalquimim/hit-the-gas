@@ -1,8 +1,8 @@
 import { getCars } from "@/app/_lib/data-services";
 import CarCard from "./CarCard";
 
-async function CarsList() {
-  const cars = await getCars();
+async function CarsList({ manufacturersIds }) {
+  const cars = await getCars(manufacturersIds);
 
   if (!cars?.length) return null;
 

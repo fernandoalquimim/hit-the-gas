@@ -1,0 +1,13 @@
+.swiper-slide {
+  margin-block: auto;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--color-accent-600);
+  width: fit-content;
+}
+
+.swiper-button-disabled {
+  display: none;
+}

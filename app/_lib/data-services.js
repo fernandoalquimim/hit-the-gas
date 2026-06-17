@@ -21,12 +21,17 @@ export async function createClient(newClient) {
   return data;
 }
 
-export async function getCars() {
-  const { data, error } = await supabase
+export async function getCars(selectedManufacturers = []) {
+  let query = supabase
     .from("cars")
     .select(
       "id, name, maxCapacity, regularPrice, discount, image, brands(name,logo,dimensions)",
     );
+
+  if (selectedManufacturers.length)
+    query = query.in("brandId", selectedManufacturers);
+
+  const { data, error } = await query;
 
   if (error) throw new Error("Cars could not be loaded");
 
@@ -46,6 +51,17 @@ export async function getCar(id) {
   // await new Promise((res) => setTimeout(res, 1000));
 
   if (error) notFound();
+
+  return data;
+}
+
+export async function getManufacturers() {
+  const { data, error } = await supabase
+    .from("brands")
+    .select("id, name, logo, originalDimensions")
+    .order("name");
+
+  if (error) throw new Error("Brands could not be loaded");
 
   return data;
 }

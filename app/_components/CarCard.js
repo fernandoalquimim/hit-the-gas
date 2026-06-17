@@ -21,7 +21,7 @@ function CarCard({ car }) {
           src={image}
           alt={`Car ${name}`}
           fill
-          className="object-cover border-r border-primary-800"
+          className="object-cover border-r border-primary-800 select-none"
         />
       </div>
 
