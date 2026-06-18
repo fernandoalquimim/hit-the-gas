@@ -20,7 +20,7 @@ function Page({ searchParams }) {
       <h1 className="text-4xl mb-3 text-accent-400 font-medium">
         The road will never be the same!
       </h1>
-      <p className="text-primary-200 text-xl mb-10">
+      <p className="text-primary-200 text-md mb-5">
         Experience the thrill of driving the world&apos;s most powerful cars.
         Whether you want to take the wheel yourself or sit back and enjoy the
         ride with a professional driver, we offer unforgettable high-performance
@@ -34,7 +34,7 @@ function Page({ searchParams }) {
 
       <Manufacturer selected={manufacturersIds} />
 
-      <Suspense fallback={<Spinner />} key={manufacturersIds}>
+      <Suspense fallback={<Spinner />} key={filter}>
         <CarsList manufacturersIds={manufacturersIds} />
       </Suspense>
     </Main>

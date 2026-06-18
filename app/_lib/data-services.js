@@ -57,13 +57,15 @@ export async function getCar(id) {
 
 export async function getManufacturers() {
   const { data, error } = await supabase
-    .from("brands")
-    .select("id, name, logo, originalDimensions")
+    .from("cars")
+    .select("brands(id, name, logo, originalDimensions)")
     .order("name");
 
   if (error) throw new Error("Brands could not be loaded");
 
-  return data;
+  return data
+    .map((d) => d.brands)
+    .filter((b, i, arr) => i === arr.findIndex((t) => t.id === b.id));
 }
 
 export async function getSettings() {
