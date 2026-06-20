@@ -5,7 +5,10 @@ async function Navigation() {
   const session = await auth();
 
   return (
-    <nav className="z-10 text-xl text-white absolute md:static max-w-md md:max-w-full w-full md:w-fit -top-2 rounded-xl bg-[rgba(0,0,0,0.20)] md:bg-transparent">
+    <nav
+      id="header-menu"
+      className="z-10 text-xl text-white absolute md:static max-w-md md:max-w-full w-full md:w-fit rounded-xl bg-[rgba(0,0,0,0.20)] md:bg-transparent transition-all duration-100 ease opacity-0 md:opacity-100 -top-2"
+    >
       <ul className="flex flex-col md:flex-row backdrop-blur-xl md:backdrop-blur-none gap-12 items-center pt-32 pb-7 md:p-0 rounded-xl shadow-[0_0_3.2rem_0.1rem_rgba(0,0,0,1)] md:shadow-none">
         <li>
           <Link
