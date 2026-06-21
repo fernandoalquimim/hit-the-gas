@@ -6,21 +6,29 @@ import Overlay from "./_components/Overlay";
 
 function Page() {
   return (
-    <div className="flex-1 grid relative">
+    <div className="flex-1 flex relative justify-center">
       <Overlay />
       <Slideshow />
-      <div className="absolute z-10 place-self-center text-center flex flex-col items-center gap-4 -mt-72 sliding-div">
+      <div className="z-10 pt-44 flex flex-col items-center gap-4 sliding-div">
         <div>
           <h1
-            className="rubik-upper-shadow title-gratient-bg text-7xl"
-            data-text="Give me fuel, give me fire,"
+            className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] xl:inline"
+            data-text="give me fuel,"
           >
-            Give me fuel, give me fire,
+            give me fuel,
           </h1>
+          <div className="w-fit mx-auto xl:inline">
+            <h1
+              className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] xl:inline"
+              data-text="give me fire,"
+            >
+              give me fire,
+            </h1>
+          </div>
         </div>
         <div>
           <h3
-            className="rubik-upper-shadow subtitle-gratient-bg text-4xl"
+            className="rubik-upper-shadow subtitle-gratient-bg text-2xl sm:text-4xl"
             data-text="give me that wich I desire!"
           >
             give me that wich I desire!
