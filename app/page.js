@@ -6,10 +6,10 @@ import Overlay from "./_components/Overlay";
 
 function Page() {
   return (
-    <div className="flex-1 flex relative justify-center">
+    <div className="flex-1 grid relative">
       <Overlay />
       <Slideshow />
-      <div className="z-10 pt-44 flex flex-col items-center gap-4 sliding-div">
+      <div className="absolute z-10 justify-self-center top-60 text-center flex flex-col items-center gap-4 sliding-div">
         <div>
           <h1
             className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] xl:inline"
