@@ -117,7 +117,7 @@ function Selector({ manufacturers, selected }) {
         })}
       </Swiper>
       <button
-        className="cursor-pointer w-fit h-fit my-auto"
+        className={`w-fit h-fit my-auto ${selectedIds.length ? "cursor-pointer" : ""}`}
         title="Clear filters"
         onClick={() => {
           setSelectedIds([]);
