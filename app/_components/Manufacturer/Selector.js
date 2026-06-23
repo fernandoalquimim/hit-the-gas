@@ -73,6 +73,7 @@ function Selector({ manufacturers, selected }) {
             slidesPerGroup: 6,
           },
         }}
+        centerInsufficientSlides={true}
       >
         {displayManufacturers.map((m, i) => {
           const [logoWidth, logoHeight] = m.originalDimensions.split("-");
