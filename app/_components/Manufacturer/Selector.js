@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -23,24 +23,6 @@ function Selector({ manufacturers, selected }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  function parseManufacturersArray(orderingManufacturers) {
-    const arr = [];
-    const totalPerPage = 6;
-    for (
-      let i = 0;
-      i < Math.ceil(orderingManufacturers.length / totalPerPage);
-      i++
-    ) {
-      arr.push(
-        orderingManufacturers.slice(
-          i * totalPerPage,
-          i * totalPerPage + totalPerPage,
-        ),
-      );
-    }
-    return arr;
-  }
-
   function handleFilter(selected) {
     const params = new URLSearchParams(searchParams);
 
@@ -51,7 +33,7 @@ function Selector({ manufacturers, selected }) {
   }
 
   useEffect(() => {
-    setDisplayManufacturers(parseManufacturersArray(manufacturers));
+    setDisplayManufacturers(manufacturers);
   }, [manufacturers]);
 
   useEffect(() => {
@@ -68,48 +50,70 @@ function Selector({ manufacturers, selected }) {
         )}
         <AdjustmentsHorizontalIcon className="w-7 h-7 text-primary-600" />
       </div>
-      <Swiper navigation={true} modules={[Navigation]} className="w-[92%]">
-        {displayManufacturers.map((l, i) => (
-          <SwiperSlide key={i}>
-            <div className="flex justify-around items-center w-full h-full">
-              {l.map((c) => {
-                const [logoWidth, logoHeight] = c.originalDimensions.split("-");
-                return (
-                  <label className="cursor-pointer" key={c.id}>
-                    <div className="relative flex justify-around items-center w-fit h-fit ">
-                      <Image
-                        src={c.logo}
-                        alt="logo"
-                        width={logoWidth}
-                        height={logoHeight}
-                        style={{ height: `${logoHeight}px` }}
-                      />
-                      {selectedIds.includes(c.id) && (
-                        <div className="absolute top-0 right-0 w-2.5 h-2.5 rounded-[50%] bg-[#5fa212] border border-solid border-accent-50" />
-                      )}
-                      <input
-                        type="checkbox"
-                        className="hidden"
-                        onChange={() => {
-                          let filteredIds;
-                          if (!selectedIds.includes(c.id)) {
-                            filteredIds = [...selectedIds, c.id];
-                          } else {
-                            filteredIds = selectedIds.filter(
-                              (id) => id !== c.id,
-                            );
-                          }
-                          setSelectedIds(filteredIds);
-                          handleFilter(filteredIds);
-                        }}
-                      />
-                    </div>
-                  </label>
-                );
-              })}
-            </div>
-          </SwiperSlide>
-        ))}
+      <Swiper
+        navigation={true}
+        modules={[Navigation]}
+        slidesPerView={1}
+        slidesPerGroup={1}
+        breakpoints={{
+          640: {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+          },
+          768: {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+          },
+          1024: {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+          },
+          1280: {
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+          },
+        }}
+      >
+        {displayManufacturers.map((m, i) => {
+          const [logoWidth, logoHeight] = m.originalDimensions.split("-");
+          return (
+            <SwiperSlide key={i}>
+              <label
+                className="cursor-pointer"
+                width={logoWidth}
+                height={logoHeight}
+                key={m.id}
+              >
+                <div className="relative flex justify-around items-center w-fit h-fit ">
+                  <Image
+                    src={m.logo}
+                    alt="logo"
+                    width={logoWidth}
+                    height={logoHeight}
+                    style={{ height: `${logoHeight}px` }}
+                  />
+                  {selectedIds.includes(m.id) && (
+                    <div className="absolute top-0 right-0 w-2.5 h-2.5 rounded-[50%] bg-[#5fa212] border border-solid border-accent-50" />
+                  )}
+                  <input
+                    type="checkbox"
+                    className="hidden"
+                    onChange={() => {
+                      let filteredIds;
+                      if (!selectedIds.includes(m.id)) {
+                        filteredIds = [...selectedIds, m.id];
+                      } else {
+                        filteredIds = selectedIds.filter((id) => id !== m.id);
+                      }
+                      setSelectedIds(filteredIds);
+                      handleFilter(filteredIds);
+                    }}
+                  />
+                </div>
+              </label>
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
       <button
         className="cursor-pointer w-fit h-fit my-auto"
