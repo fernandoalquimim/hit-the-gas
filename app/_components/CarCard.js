@@ -74,7 +74,7 @@ function CarCard({ car }) {
         <div className="flex justify-end bg-primary-950 border-t border-t-primary-800 text-right">
           <Link
             href={`/cars/${id}`}
-            className="h-full w-fit flex items-center border-l border-primary-800 py-4 px-5 hover:bg-accent-600 transition-all hover:text-primary-900"
+            className="h-full w-fit flex items-center border-l border-primary-800 py-4 px-3.5 hover:bg-accent-600 transition-all hover:text-primary-900"
           >
             Details & reservation &rarr;
           </Link>
