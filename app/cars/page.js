@@ -17,7 +17,7 @@ function Page({ searchParams }) {
 
   return (
     <Main>
-      <h1 className="text-2xl sm:text-4xl mb-3 text-accent-400 font-medium">
+      <h1 className="text-2xl sm:text-4xl mb-3 text-accent-400 font-medium transition-all duration-300 ease-in-out">
         The road will never be the same!
       </h1>
       <p className="text-primary-200 text-md mb-5 text-justify">
