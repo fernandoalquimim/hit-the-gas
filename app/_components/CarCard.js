@@ -16,7 +16,7 @@ function CarCard({ car }) {
 
   return (
     <div className="flex border-primary-800 border">
-      <div className="flex-1 relative">
+      <div className="flex-1 relative min-w-28">
         <Image
           src={image}
           alt={`Car ${name}`}
@@ -25,8 +25,8 @@ function CarCard({ car }) {
         />
       </div>
 
-      <div className="grow max-w-md">
-        <div className="relative pt-5 pb-4 pl-7 pr-3 bg-primary-950">
+      <div className="grow max-w-md grid grid-cols-[1fr] grid-rows-[3fr_1fr]">
+        <div className="relative pt-5 pb-4 pl-7 pr-3 bg-primary-950 flex flex-col justify-between gap-5">
           <div className="absolute top-3 right-2">
             <Image
               src={brandLogo}
@@ -37,17 +37,20 @@ function CarCard({ car }) {
             />
           </div>
 
-          <div style={{ paddingRight: `${logoWidth - 4}px` }} className="mb-6">
-            <h3 className="text-accent-500 font-semibold text-2xl ">{name}</h3>
-            <p className="text-xl text-accent-50">{brandName}</p>
+          <div style={{ paddingRight: `${logoWidth - 4}px` }}>
+            <h3 className="text-accent-500 font-semibold text-2xl md:max-lg:text-xl transition-all duration-300 ease-in-out">
+              {name}
+            </h3>
+            <p className="text-xl md:max-lg:text-lg text-accent-50 transition-all duration-300 ease-in-out">
+              {brandName}
+            </p>
           </div>
 
-          <div className="flex justify-between">
-            <div className="flex gap-3 items-end">
+          <div className="flex justify-between items-end md:max-lg:flex-col md:max-lg:items-start">
+            <div className="flex gap-3 items-center">
               <UsersIcon className="h-5 w-5 text-primary-600" />
               <p className="text-lg text-primary-200">
-                For up to <span className="font-bold">{maxCapacity}</span>{" "}
-                people
+                <span className="font-bold">{maxCapacity}</span> people
               </p>
             </div>
             <p className="flex gap-3 justify-end items-baseline">
@@ -68,10 +71,10 @@ function CarCard({ car }) {
           </div>
         </div>
 
-        <div className="bg-primary-950 border-t border-t-primary-800 text-right">
+        <div className="flex justify-end bg-primary-950 border-t border-t-primary-800 text-right">
           <Link
             href={`/cars/${id}`}
-            className="border-l border-primary-800 py-4 px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900"
+            className="h-full w-fit flex items-center border-l border-primary-800 py-4 px-5 hover:bg-accent-600 transition-all hover:text-primary-900"
           >
             Details & reservation &rarr;
           </Link>
