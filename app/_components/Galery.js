@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -12,6 +13,8 @@ import "@/app/_styles/carSlideShow.css";
 import GaleryModal from "./Modals/Galery/GaleryModal";
 
 function Galery({ images }) {
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+
   return (
     <GaleryModal>
       <GaleryModal.Open opens={"galery"}>
@@ -21,6 +24,9 @@ function Galery({ images }) {
             dynamicBullets: true,
           }}
           modules={[Navigation, Pagination]}
+          onSlideChange={(s) => {
+            setCurrentSlideIndex(s.realIndex);
+          }}
         >
           {images.map((image, i) => (
             <SwiperSlide key={i}>
@@ -42,6 +48,7 @@ function Galery({ images }) {
               dynamicBullets: true,
             }}
             modules={[Navigation, Pagination]}
+            initialSlide={currentSlideIndex}
           >
             {images.map((image, i) => (
               <SwiperSlide key={i}>
