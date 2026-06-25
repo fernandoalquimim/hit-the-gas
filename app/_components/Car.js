@@ -29,7 +29,9 @@ function Car({ car, booking }) {
     acc,
     brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
-  const [logoWidth, logoHeight] = brandDimensions.split("-");
+  const [logoW, logoH] = brandDimensions.split("-");
+  const logoWidth = logoW * 2;
+  const logoHeight = logoH * 2;
 
   const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
     booking || {};
@@ -37,149 +39,174 @@ function Car({ car, booking }) {
   const editMode = !!booking;
 
   return (
-    <div className="relative grid grid-cols-[3fr_4fr] gap-20 border border-primary-800 py-3 px-10 mb-24">
-      <div className="relative w-106 h-129 scale-[1.15] -translate-x-3">
-        {editMode ? (
-          <Image src={image} fill className="object-cover" alt={name} />
-        ) : (
-          <Suspense
-            fallback={
-              <Image src={image} fill className="object-cover" alt={name} />
-            }
-          >
-            <CarGalery car={car} />
-          </Suspense>
-        )}
-      </div>
-
-      <div className="absolute top-3 right-2 z-50">
-        <Image
-          src={brandLogo}
-          alt="logo"
-          width={logoWidth}
-          height={logoHeight}
-          className="object-cover object-center"
-        />
-      </div>
-
-      <div className="pt-48">
-        <div
-          className="absolute top-8 right-0 flex flex-col max-w-3/4 w-full mb-5 bg-primary-950 p-6"
-          style={{ paddingRight: `${Number(logoWidth) + 16}px` }}
-        >
-          <div className="text-7xl font-black text-accent-100 whitespace-nowrap overflow-hidden text-ellipsis">
-            {name}
-          </div>
-          <div className="text-3xl font-extrabold text-accent-400">
-            {brandName}
-          </div>
+    <div className="border border-primary-800 mb-24 @container/car">
+      <div className="relative grid grid-cols-1 @min-[951px]/car:grid-cols-[3fr_4fr] gap-6 @min-[951px]/car:gap-12">
+        <div className="relative w-full h-[50dvh] @min-[951px]/car:w-106 @min-[951px]/car:h-full @min-[951px]/car:max-h-[80dvh] @min-[951px]/car:scale-[1.15] @min-[951px]/car:-translate-x-3 transition-all duration-300">
+          {editMode ? (
+            <Image src={image} fill className="object-cover" alt={name} />
+          ) : (
+            <Suspense
+              fallback={
+                <Image src={image} fill className="object-cover" alt={name} />
+              }
+            >
+              <CarGalery car={car} />
+            </Suspense>
+          )}
         </div>
-        {!editMode ? (
-          <>
-            <p className="text-lg text-primary-300 mb-10">
-              <TextExpander>{description}</TextExpander>
-            </p>
 
-            <ul className="grid grid-cols-2 gap-4 mb-7">
-              {discount > 0 && (
-                <li className="flex gap-3 items-center">
-                  <CurrencyDollarIcon className="h-5 w-5 text-green-300" />
-                  <span className="text-lg">
-                    <span className="font-bold text-green-300">
-                      Discount of {formatCurrency(discount)}
+        <div className="z-10 absolute top-3 @max-[951px]/car:-left-px @min-[951px]/car:right-0 flex bg-primary-950 px-4 py-2 gap-5 max-w-[95%]">
+          <Image
+            src={brandLogo}
+            alt="logo"
+            width={logoWidth}
+            height={logoHeight}
+            className="@min-[951px]/car:hidden"
+            style={{
+              minWidth: logoWidth,
+              maxWidth: logoWidth,
+              minHeight: logoHeight,
+              maxHeight: logoHeight,
+              marginTop: "auto",
+              marginBottom: "auto",
+            }}
+          />
+
+          <div className="flex flex-col @max-[951px]/car:items-start justify-around">
+            <div className="text-6xl @min-[951px]/car:text-right font-black text-accent-100 wrap-anywhere">
+              {name}
+            </div>
+            <div className="text-3xl @min-[951px]/car:text-right font-extrabold text-accent-400 wrap-anywhere">
+              {brandName}
+            </div>
+          </div>
+
+          <Image
+            src={brandLogo}
+            alt="logo"
+            width={logoWidth}
+            height={logoHeight}
+            className="hidden @min-[951px]/car:block"
+            style={{
+              minWidth: logoWidth,
+              maxWidth: logoWidth,
+              minHeight: logoHeight,
+              maxHeight: logoHeight,
+              marginTop: "auto",
+              marginBottom: "auto",
+            }}
+          />
+        </div>
+
+        <div className="px-4 @min-[951px]/car:pt-48">
+          {!editMode ? (
+            <>
+              <p className="text-lg text-justify text-primary-300 mb-10">
+                <TextExpander>{description}</TextExpander>
+              </p>
+
+              <ul className="grid grid-cols-1 @min-[479px]/car:grid-cols-2 w-fit @min-[479px]/car:w-full mx-auto @min-[479px]/car:justify-around gap-4 mb-7">
+                {discount > 0 && (
+                  <li className="flex gap-3 items-center">
+                    <CurrencyDollarIcon className="h-5 w-5 text-green-300" />
+                    <span className="text-lg">
+                      <span className="font-bold text-green-300">
+                        Discount of {formatCurrency(discount)}
+                      </span>
                     </span>
+                  </li>
+                )}
+                <li className="flex gap-3 items-center">
+                  <UsersIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    For up to <span className="font-bold">{maxCapacity}</span>{" "}
+                    people
                   </span>
                 </li>
-              )}
-              <li className="flex gap-3 items-center">
-                <UsersIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  For up to <span className="font-bold">{maxCapacity}</span>{" "}
-                  people
-                </span>
-              </li>
-              <li className="flex gap-3 items-center">
-                <ChartBarIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  Max speed: <span className="font-bold">{maxSpeed}</span> km/h
-                </span>
-              </li>
-
-              <li className="flex gap-3 items-center">
-                <BoltIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  <span className="font-bold">{hp}</span> horsepower
-                </span>
-              </li>
-              <li className="flex gap-3 items-center">
-                <FireIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  Displacement:{" "}
-                  <span className="font-bold">{cc.toFixed(1)}</span> cc
-                </span>
-              </li>
-              <li className="flex gap-3 items-center">
-                <ClockIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  0-100 km/h: <span className="font-bold">{acc}</span> s
-                </span>
-              </li>
-            </ul>
-          </>
-        ) : (
-          <>
-            <ul className="grid grid-cols-1 gap-4 mb-7">
-              <li className="flex gap-3 items-center">
-                <UsersIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  For <span className="font-bold">{numPeople}</span>{" "}
-                  {numPeople === 1 ? "person" : "people"}{" "}
-                  {hasDriver && (
-                    <span className="text-accent-400">(+ driver)</span>
-                  )}
-                </span>
-              </li>
-
-              <li className="flex gap-3 items-center">
-                <CalendarIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  For <span className="font-bold">{numDays}</span> day
-                  {numDays > 1 && "s"}
-                </span>
-              </li>
-
-              <li className="flex gap-3 items-center">
-                <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
-                <span className="text-lg">
-                  {numDays > 1 ? "From " : "To "}
-                  <span className="font-bold">
-                    {format(new Date(startDate), "EEE, MMM dd yyyy")}
+                <li className="flex gap-3 items-center">
+                  <ChartBarIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    Max speed: <span className="font-bold">{maxSpeed}</span>{" "}
+                    km/h
                   </span>
-                </span>
-              </li>
+                </li>
 
-              {numDays > 1 && (
+                <li className="flex gap-3 items-center">
+                  <BoltIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    <span className="font-bold">{hp}</span> horsepower
+                  </span>
+                </li>
+                <li className="flex gap-3 items-center">
+                  <FireIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    Displacement:{" "}
+                    <span className="font-bold">{cc.toFixed(1)}</span> cc
+                  </span>
+                </li>
+                <li className="flex gap-3 items-center">
+                  <ClockIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    0-100 km/h: <span className="font-bold">{acc}</span> s
+                  </span>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <>
+              <ul className="grid grid-cols-1 gap-4 mb-7">
+                <li className="flex gap-3 items-center">
+                  <UsersIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    For <span className="font-bold">{numPeople}</span>{" "}
+                    {numPeople === 1 ? "person" : "people"}{" "}
+                    {hasDriver && (
+                      <span className="text-accent-400">(+ driver)</span>
+                    )}
+                  </span>
+                </li>
+
+                <li className="flex gap-3 items-center">
+                  <CalendarIcon className="h-5 w-5 text-primary-600" />
+                  <span className="text-lg">
+                    For <span className="font-bold">{numDays}</span> day
+                    {numDays > 1 && "s"}
+                  </span>
+                </li>
+
                 <li className="flex gap-3 items-center">
                   <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
                   <span className="text-lg">
-                    To{" "}
+                    {numDays > 1 ? "From " : "To "}
                     <span className="font-bold">
-                      {format(new Date(endDate), "EEE, MMM dd yyyy")}
+                      {format(new Date(startDate), "EEE, MMM dd yyyy")}
                     </span>
                   </span>
                 </li>
+
+                {numDays > 1 && (
+                  <li className="flex gap-3 items-center">
+                    <CalendarDaysIcon className="h-5 w-5 text-primary-600" />
+                    <span className="text-lg">
+                      To{" "}
+                      <span className="font-bold">
+                        {format(new Date(endDate), "EEE, MMM dd yyyy")}
+                      </span>
+                    </span>
+                  </li>
+                )}
+              </ul>
+              {observations && (
+                <>
+                  <span className="text-lg">Observations:</span>
+                  <p className="text-lg text-primary-300 mb-10 text-justify">
+                    <TextExpander>{observations}</TextExpander>
+                  </p>
+                </>
               )}
-            </ul>
-            {observations && (
-              <>
-                <span className="text-lg">Observations:</span>
-                <p className="text-lg text-primary-300 mb-10">
-                  <TextExpander>{observations}</TextExpander>
-                </p>
-              </>
-            )}
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
