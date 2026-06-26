@@ -30,7 +30,7 @@ async function Reservation({ car, booking }) {
 
   return (
     <ReservationContext>
-      <div className="@container mb-12">
+      <div className="@container">
         <DriverSelector />
         <div className="grid grid-cols-2 @max-[67rem]:grid-cols-1 border border-primary-800">
           <DateSelector

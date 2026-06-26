@@ -24,14 +24,12 @@ async function Page({ params }) {
 
   return (
     <Main>
-      <div className="max-w-6xl mx-auto mt-8">
+      <div className="max-w-6xl mx-auto grid gap-10 min-[1032px]:gap-15 py-8 max-[1032px]:pt-0">
         <Car car={car} />
 
-        <div>
-          <h2 className="text-5xl font-semibold text-center mb-10 text-accent-400">
-            Reserve now. Pay once you get into the store.
-          </h2>
-        </div>
+        <h2 className="text-5xl font-semibold text-center text-accent-400 min-[1032px]:mt-5">
+          Reserve now. Pay once you get into the store.
+        </h2>
 
         <Suspense fallback={<Spinner />}>
           <Reservation car={car} />
