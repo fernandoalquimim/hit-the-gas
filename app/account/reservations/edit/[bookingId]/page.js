@@ -8,8 +8,8 @@ async function Page({ params }) {
   const car = await getCar(carId);
 
   return (
-    <div className="mx-0.5">
-      <h2 className="font-semibold text-2xl text-accent-400 mb-7">
+    <div className="mx-0.5 grid gap-10 pb-8">
+      <h2 className="font-semibold text-2xl text-accent-400">
         Edit Reservation #{reservationId}
       </h2>
 
