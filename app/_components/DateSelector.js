@@ -91,7 +91,7 @@ function DateSelector({ settings, car, bookedDates, booking }) {
         className="pt-12"
         classNames={{
           months:
-            "min-h-72 min-w-60 flex flex-col items-center gap-6 @lg:flex-row @lg:justify-around @lg:items-start @2xl:justify-center @2xl:gap-10",
+            "min-h-72 min-w-60 flex flex-col items-center gap-6 @lg:flex-row @lg:justify-around @lg:items-start @2xl:justify-center @2xl:gap-10 @max-lg:pb-12",
         }}
         mode={selectorMode}
         selected={hasDriver ? singleDate : displayRange}
@@ -109,9 +109,9 @@ function DateSelector({ settings, car, bookedDates, booking }) {
         }
       />
 
-      <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-16.25">
-        <div className="flex items-baseline gap-6">
-          <p className="flex gap-2 items-baseline">
+      <div className="flex items-center justify-center px-8 bg-accent-500 text-primary-800 @lg:h-16.25 @max-lg:flex-col @max-lg:py-3 transition-all duration-300">
+        <div className="flex justify-between items-center @max-lg:flex-col @max-lg:items-end @max-lg:gap-2.5 @max-lg:min-w-56 @lg:max-w-130.5 @lg:w-full">
+          <p className="flex items-baseline">
             {discount > 0 ? (
               <>
                 <span className="text-2xl">${regularPrice - discount}</span>
@@ -122,32 +122,31 @@ function DateSelector({ settings, car, bookedDates, booking }) {
             ) : (
               <span className="text-2xl">${regularPrice}</span>
             )}
-            <span className="">/ day</span>
+            <span className="">/day</span>
+            {numDays ? (
+              <span className="bg-accent-600 px-3 py-2 text-2xl ml-2.5">
+                <span>&times;</span> <span>{numDays}</span>
+              </span>
+            ) : null}
           </p>
           {numDays ? (
-            <>
-              <p className="bg-accent-600 px-3 py-2 text-2xl">
-                <span>&times;</span> <span>{numDays}</span>
-              </p>
-              <p>
-                <span className="text-lg font-bold uppercase">Total</span>{" "}
-                <span className="text-2xl font-semibold">${carPrice}</span>
-              </p>
-            </>
+            <p>
+              <span className="text-lg font-bold uppercase">Total</span>{" "}
+              <span className="text-2xl font-semibold">${carPrice}</span>
+            </p>
+          ) : null}
+          {range?.from || range?.to ? (
+            <button
+              className="border border-primary-800 py-2 px-4 text-sm font-semibold"
+              onClick={() => {
+                resetRange();
+                setSingleDate(null);
+              }}
+            >
+              Clear
+            </button>
           ) : null}
         </div>
-
-        {range?.from || range?.to ? (
-          <button
-            className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => {
-              resetRange();
-              setSingleDate(null);
-            }}
-          >
-            Clear
-          </button>
-        ) : null}
       </div>
     </div>
   );
