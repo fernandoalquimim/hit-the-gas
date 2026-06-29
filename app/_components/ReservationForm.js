@@ -93,7 +93,7 @@ function ReservationForm({ user, car, booking }) {
           )}
         </div>
       </form>
-      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-between items-center @min-[67rem]:hidden">
+      <div className="bg-primary-800 text-primary-300 px-16 py-2 flex justify-end items-center gap-6 @min-[67rem]:hidden">
         <ClientInfo user={user} />
       </div>
     </div>
