@@ -85,11 +85,13 @@ function ReservationForm({ user, car, booking }) {
 
         <div className="flex justify-end items-center gap-6">
           {!(startDate && endDate && numDays) ? (
-            <p className="text-primary-300 text-base h-15 leading-15">
+            <p className="text-primary-300 text-base @max-[310px]:text-sm h-15 leading-15">
               Start by selecting dates
             </p>
           ) : (
-            <SubmitButton>Reserve now</SubmitButton>
+            <SubmitButton>
+              <span className="@max-[310px]:text-sm">Reserve now</span>
+            </SubmitButton>
           )}
         </div>
       </form>
