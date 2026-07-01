@@ -1,38 +1,119 @@
-import Link from "next/link";
-import { isPast } from "date-fns";
-import { PencilSquareIcon, TrashIcon } from "@heroicons/react/24/solid";
+import Image from "next/image";
+import { formatDistance, format, isPast, isToday, parseISO } from "date-fns";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-import Modal from "./Modal";
-import ReservationDeleteInfo from "./ReservationDeleteInfo";
-import ReservationInfo from "./ReservationInfo";
+import ReservationEditLink from "./ReservationEditLink";
+import ReservationDeleteButton from "./ReservationDeleteButton";
 
-function ReservationCard({ booking, onDelete }) {
-  const { id, startDate } = booking;
+export const formatDistanceFromNow = (dateStr) =>
+  formatDistance(parseISO(dateStr), new Date(), {
+    addSuffix: true,
+  }).replace("about ", "");
+
+function ReservationCard({ booking, onDelete, showActions = true }) {
+  const {
+    id,
+    startDate,
+    endDate,
+    numDays,
+    totalPrice,
+    numPeople,
+    created_at,
+    hasDriver,
+    cars: { name, image },
+  } = booking;
 
   return (
     <div className="flex border border-primary-800">
-      <ReservationInfo booking={booking} />
+      <div className="flex @max-[576px]/bookings:flex-col w-full">
+        <div className="relative min-h-36 h-full @min-[576px]/bookings:aspect-square">
+          <Image
+            src={image}
+            fill
+            alt={name}
+            className="object-cover border-r border-primary-800"
+          />
+          {isPast(new Date(startDate)) ? (
+            <span className="absolute top-2 left-2 bg-primary-900 text-primary-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
+              past
+            </span>
+          ) : (
+            <>
+              <span className="absolute top-2 left-2 bg-green-800 text-green-200 h-7 px-3 uppercase text-xs font-bold flex items-center rounded-sm">
+                upcoming
+              </span>
+              {showActions && (
+                <div className="absolute right-2 top-2 flex gap-2">
+                  <ReservationEditLink id={id} variation="mini">
+                    <PencilIcon className="h-4.5 w-4.5" />
+                  </ReservationEditLink>
+                  <ReservationDeleteButton
+                    booking={booking}
+                    onDelete={onDelete}
+                    variation="mini"
+                  >
+                    <TrashIcon className="h-5 w-5" />
+                  </ReservationDeleteButton>
+                </div>
+              )}
+            </>
+          )}
+        </div>
 
-      {!isPast(startDate) ? (
-        <div className="flex flex-col border-l border-primary-800 w-25">
-          <Link
-            href={`/account/reservations/edit/${id}`}
-            className="group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 border-b border-primary-800 grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900"
-          >
-            <PencilSquareIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
+        <div className="grow px-6 py-3 flex flex-col">
+          <div className="flex items-center justify-between gap-5">
+            <div className="text-base font-semibold">
+              <span className="text-primary-400">#{id}</span> &bull;{" "}
+              <span>
+                {name} reserved for {numDays} {numDays > 1 ? "days" : "day"}
+              </span>
+            </div>
+          </div>
+
+          <p className="text-sm text-primary-300">
+            {format(new Date(startDate), "EEE, MMM dd yyyy")} (
+            {isToday(new Date(startDate))
+              ? "Today"
+              : formatDistanceFromNow(startDate)}
+            ){" "}
+            {!hasDriver && (
+              <> &mdash; {format(new Date(endDate), "EEE, MMM dd yyyy")}</>
+            )}
+          </p>
+
+          <div className="mt-auto @container/footer">
+            <div className="flex justify-between items-baseline @max-[500px]/footer:flex-col @max-[500px]/footer:gap-1">
+              <div className="flex items-center @max-[220px]/footer:justify-between @max-[220px]/footer:w-full @min-[220px]/footer:gap-3">
+                <p className="text-base font-semibold text-accent-400">
+                  ${totalPrice}
+                </p>
+                <p className="text-primary-300">&bull;</p>
+                <p className="text-base text-primary-300">
+                  {numPeople} {numPeople > 1 ? "people" : "person"}{" "}
+                  {hasDriver && (
+                    <span className="@max-[220px]/footer:block text-accent-300">
+                      (+ driver)
+                    </span>
+                  )}
+                </p>
+              </div>
+              <p className="text-xs text-primary-400">
+                Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {showActions && !isPast(startDate) ? (
+        <div className="flex flex-col border-l border-primary-800 w-25 @max-[576px]/bookings:hidden">
+          <ReservationEditLink id={id}>
+            <PencilIcon className="h-4.5 w-4.5 text-primary-600 group-hover:text-primary-800 transition-colors" />
             <span className="mt-1">Edit</span>
-          </Link>
-          <Modal>
-            <Modal.Open opens={"delete"}>
-              <button className="group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900 cursor-pointer">
-                <TrashIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
-                <span className="mt-1">Delete</span>
-              </button>
-            </Modal.Open>
-            <Modal.Window name={"delete"}>
-              <ReservationDeleteInfo booking={booking} onConfirm={onDelete} />
-            </Modal.Window>
-          </Modal>
+          </ReservationEditLink>
+          <ReservationDeleteButton booking={booking} onDelete={onDelete}>
+            <TrashIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
+            <span className="mt-1">Delete</span>
+          </ReservationDeleteButton>
         </div>
       ) : null}
     </div>
