@@ -60,17 +60,16 @@ function ReservationCard({ booking, onDelete, showActions = true }) {
           )}
         </div>
 
-        <div className="grow px-6 py-3 flex flex-col">
+        <div className="grow px-6 py-3 flex flex-col @container/details">
           <div className="flex items-center justify-between gap-5">
-            <div className="text-base font-semibold">
+            <div className="text-base @min-[398px]/details:text-xl @min-[500px]/details:text-2xl font-semibold transition-all duration-300">
               <span className="text-primary-400">#{id}</span> &bull;{" "}
               <span>
                 {name} reserved for {numDays} {numDays > 1 ? "days" : "day"}
               </span>
             </div>
           </div>
-
-          <p className="text-sm text-primary-300">
+          <p className="text-sm @min-[398px]/details:text-lg text-primary-300 transition-all duration-300">
             {format(new Date(startDate), "EEE, MMM dd yyyy")} (
             {isToday(new Date(startDate))
               ? "Today"
@@ -84,11 +83,11 @@ function ReservationCard({ booking, onDelete, showActions = true }) {
           <div className="mt-auto @container/footer">
             <div className="flex justify-between items-baseline @max-[500px]/footer:flex-col @max-[500px]/footer:gap-1">
               <div className="flex items-center @max-[220px]/footer:justify-between @max-[220px]/footer:w-full @min-[220px]/footer:gap-3">
-                <p className="text-base font-semibold text-accent-400">
+                <p className="text-base @min-[398px]/details:text-lg font-semibold text-accent-400 transition-all duration-300">
                   ${totalPrice}
                 </p>
                 <p className="text-primary-300">&bull;</p>
-                <p className="text-base text-primary-300">
+                <p className="text-base @min-[398px]/details:text-lg text-primary-300 transition-all duration-300">
                   {numPeople} {numPeople > 1 ? "people" : "person"}{" "}
                   {hasDriver && (
                     <span className="@max-[220px]/footer:block text-accent-300">
@@ -97,7 +96,7 @@ function ReservationCard({ booking, onDelete, showActions = true }) {
                   )}
                 </p>
               </div>
-              <p className="text-xs text-primary-400">
+              <p className="text-xs @min-[398px]/details:text-sm @min-[500px]/details:text-base text-primary-400 transition-all duration-300">
                 Booked {format(new Date(created_at), "EEE, MMM dd yyyy, p")}
               </p>
             </div>
