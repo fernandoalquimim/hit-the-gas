@@ -10,13 +10,22 @@ function ReservationDeleteInfo({ booking, onCloseModal, onConfirm }) {
 
       <ReservationCard booking={booking} showActions={false} />
 
-      <div className="flex justify-between gap-5">
-        <div className="flex items-center text-accent-500">
+      <div className="flex justify-between gap-5 @max-[353px]/bookings:flex-col">
+        <div className="flex items-center text-center text-accent-500 @max-[353px]/bookings:order-2 @max-[353px]/bookings:justify-center">
           This action cannot be undone.
         </div>
-        <div className="flex gap-4">
-          <Button onClick={onCloseModal}>Cancel</Button>
-          <Button variation="danger" onClick={() => onConfirm(booking.id)}>
+        <div className="flex gap-4 @max-[257px]/bookings:flex-col">
+          <Button
+            additionalClasses="grow transition-all duration-300"
+            onClick={onCloseModal}
+          >
+            Cancel
+          </Button>
+          <Button
+            variation="danger"
+            additionalClasses="grow transition-all duration-300"
+            onClick={() => onConfirm(booking.id)}
+          >
             Delete
           </Button>
         </div>
