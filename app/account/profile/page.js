@@ -8,11 +8,11 @@ async function Page() {
   const client = await getClient(session.user.email);
 
   return (
-    <div>
+    <div className="pb-8">
       <h2 className="font-semibold text-2xl text-accent-400 mb-4">
         Update your profile
       </h2>
-      <p className="text-lg mb-8 text-primary-200">
+      <p className="text-lg mb-8 text-primary-200 text-justify">
         Providing the following information will make your check-in process
         faster and smoother. See you soon!
       </p>
