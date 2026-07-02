@@ -153,16 +153,38 @@ export async function deleteBooking(id) {
   if (error) throw new Error("Booking could not be deleted");
 }
 
-export async function getCountries() {
+async function fetchCountries(offset = 0) {
   try {
     const res = await fetch(
-      "https://restcountries.com/v2/all?fields=name,flag",
+      `https://api.restcountries.com/countries/v5?response_fields=names.common%2Cflag.url_svg&limit=100&offset=${offset}`,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.RESTCOUNTRIES_KEY}`,
+        },
+      },
     );
-    const countries = await res.json();
+
+    const data = await res.json();
+    const countries = data?.data?.objects?.map((o) => ({
+      name: o.names.common,
+      flag: o.flag.url_svg,
+    }));
+
     return countries;
   } catch {
     throw new Error("Could not fetch countries");
   }
+}
+
+export async function getCountries() {
+  const countries = [];
+  const offset = 100;
+
+  for (let i = 0; i < 3; i++) {
+    countries.push(...(await fetchCountries(i * offset)));
+  }
+
+  return countries;
 }
 
 export async function updateClient(id, updatedFields) {
