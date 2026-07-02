@@ -16,7 +16,7 @@ export default async function Page() {
       <div className="flex items-center relative">
         <img
           referrerPolicy="no-referrer"
-          className="h-56 rounded-full"
+          className="h-56 max-sm:h-48 rounded-full transition-all duration-300"
           src={session?.user?.image}
           alt={session?.user?.name}
         />
@@ -36,7 +36,7 @@ export default async function Page() {
           />
         )}
       </div>
-      <h2 className="font-semibold text-6xl text-accent-400 mb-10">
+      <h2 className="font-semibold text-6xl max-sm:text-5xl text-center text-accent-400 mb-10 transition-all duration-300">
         Welcome, {firstName}!
       </h2>
       <Link
