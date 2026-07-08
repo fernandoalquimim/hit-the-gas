@@ -1,0 +1,18 @@
+#header-content:has(input[type="checkbox"]:checked) #header-list {
+  height: 200px;
+  opacity: 100%;
+}
+
+#header-content:has(input[type="checkbox"]:checked) {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px hsla(230, 75%, 15%, 0.2);
+}
+
+#navbar-active:checked ~ #label-menu {
+  display: none;
+}
+
+#navbar-active:checked ~ #label-close {
+  display: block;
+}

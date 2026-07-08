@@ -2,12 +2,12 @@ import Link from "next/link";
 
 import Slideshow from "./_components/Slideshow";
 import TextSlide from "./_components/TextSlide";
-import Overlay from "./_components/Overlay";
+import HeaderOverlay from "./_components/HeaderOverlay";
 
 function Page() {
   return (
     <div className="flex-1 grid relative">
-      <Overlay />
+      <HeaderOverlay />
       <Slideshow />
       <div className="absolute z-10 justify-self-center top-60 text-center flex flex-col items-center gap-4 sliding-div">
         <div>
