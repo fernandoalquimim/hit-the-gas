@@ -30,8 +30,10 @@ function Car({ car, booking }) {
     brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
   const [logoW, logoH] = brandDimensions.split("-");
-  const logoWidth = logoW * 2;
-  const logoHeight = logoH * 2;
+  const logoWidth = logoW * 1.5;
+  const logoHeight = logoH * 1.5;
+  const logoWidthMini = (logoWidth / 3) * 2;
+  const logoHeightMini = (logoHeight / 3) * 2;
 
   const { startDate, endDate, numDays, hasDriver, observations, numPeople } =
     booking || {};
@@ -53,9 +55,31 @@ function Car({ car, booking }) {
               <CarGalery car={car} />
             </Suspense>
           )}
+          <div className="z-10 absolute top-0 left-0 flex bg-primary-950 px-4 py-2 gap-5 max-w-[95%] @min-[574px]/car:hidden">
+            <Image
+              src={brandLogo}
+              alt="logo"
+              width={logoWidthMini}
+              height={logoHeightMini}
+              style={{
+                minWidth: logoWidthMini,
+                maxWidth: logoWidthMini,
+                minHeight: logoHeightMini,
+                maxHeight: logoHeightMini,
+                marginTop: "auto",
+                marginBottom: "auto",
+              }}
+            />
+            <div className="flex flex-col justify-center gap-0.5">
+              <div className="text-2xl font-black text-accent-100">{name}</div>
+              <div className="text-xl font-extrabold text-accent-400">
+                {brandName}
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="z-10 absolute top-3 @max-[951px]/car:-left-px @min-[951px]/car:right-0 flex bg-primary-950 px-4 py-2 gap-5 max-w-[95%]">
+        <div className="z-10 absolute top-3 @max-[951px]/car:-left-px @min-[951px]/car:right-0 flex bg-primary-950 px-4 py-2 gap-5 max-w-[95%] @max-[574px]/car:hidden">
           <Image
             src={brandLogo}
             alt="logo"
@@ -72,11 +96,11 @@ function Car({ car, booking }) {
             }}
           />
 
-          <div className="flex flex-col @max-[951px]/car:items-start justify-around">
-            <div className="text-6xl @min-[951px]/car:text-right font-black text-accent-100 wrap-anywhere">
+          <div className="flex flex-col @max-[951px]/car:items-start justify-center gap-2">
+            <div className="text-5xl @min-[951px]/car:text-6xl @min-[951px]/car:text-right font-black text-accent-100">
               {name}
             </div>
-            <div className="text-3xl @min-[951px]/car:text-right font-extrabold text-accent-400 wrap-anywhere">
+            <div className="text-3xl @min-[951px]/car:text-right font-extrabold text-accent-400">
               {brandName}
             </div>
           </div>
