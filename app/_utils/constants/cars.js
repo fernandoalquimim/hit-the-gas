@@ -12,7 +12,7 @@ import car10 from "@/public/10.jpg";
 const cars = [
   { image: car1 },
   { image: car2, classes: "object-cover object-center" },
-  { image: car3 },
+  { image: car3, classes: "object-cover object-bottom" },
   { image: car4, classes: "object-cover object-bottom" },
   { image: car5 },
   { image: car6, classes: "object-cover object-center" },
