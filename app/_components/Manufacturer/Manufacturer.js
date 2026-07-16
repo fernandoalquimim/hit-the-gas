@@ -5,7 +5,7 @@ async function Manufacturer({ selected }) {
   const manufacturers = await getManufacturers();
 
   return (
-    <div className="w-full h-20 mb-5">
+    <div className="w-full h-20 mb-7">
       <Selector manufacturers={manufacturers} selected={selected} />
     </div>
   );

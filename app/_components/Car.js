@@ -29,9 +29,7 @@ function Car({ car, booking }) {
     acc,
     brands: { name: brandName, logo: brandLogo, dimensions: brandDimensions },
   } = car;
-  const [logoW, logoH] = brandDimensions.split("-");
-  const logoWidth = logoW * 1.5;
-  const logoHeight = logoH * 1.5;
+  const [logoWidth, logoHeight] = brandDimensions.split("-");
   const logoWidthMini = (logoWidth / 3) * 2;
   const logoHeightMini = (logoHeight / 3) * 2;
 

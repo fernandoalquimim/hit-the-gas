@@ -58,7 +58,7 @@ export async function getCar(id) {
 export async function getManufacturers() {
   const { data, error } = await supabase
     .from("cars")
-    .select("brands(id, name, logo, originalDimensions)")
+    .select("brands(id, name, logo, dimensions)")
     .order("name");
 
   if (error) throw new Error("Brands could not be loaded");

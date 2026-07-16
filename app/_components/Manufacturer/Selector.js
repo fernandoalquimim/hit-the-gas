@@ -76,7 +76,7 @@ function Selector({ manufacturers, selected }) {
         centerInsufficientSlides={true}
       >
         {displayManufacturers.map((m, i) => {
-          const [logoWidth, logoHeight] = m.originalDimensions.split("-");
+          const [logoWidth, logoHeight] = m.dimensions.split("-");
           return (
             <SwiperSlide key={i}>
               <label
