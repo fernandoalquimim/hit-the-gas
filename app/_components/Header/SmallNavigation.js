@@ -11,7 +11,6 @@ async function SmallNavigation() {
   const session = await auth();
 
   return (
-    //
     <header className="px-8 py-5 absolute top-0 left-0 z-50 w-full md:hidden">
       <div
         id="header-content"

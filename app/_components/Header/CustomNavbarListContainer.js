@@ -1,6 +1,6 @@
 "use client";
 
-import { useOutsideClick } from "../_hooks/useOutsideClick";
+import { useOutsideClick } from "@/app/_hooks/useOutsideClick";
 
 function CustomNavbarListContainer({ children }) {
   const ref = useOutsideClick(() => {
