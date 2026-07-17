@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 
 import Main from "@/app/_components/Main";
-import CarsList from "@/app/_components/CarsList";
+import CarsList from "@/app/_components/Car/CarsList";
 import Spinner from "@/app/_components/Spinner";
 import Manufacturer from "@/app/_components/Manufacturer/Manufacturer";
 
