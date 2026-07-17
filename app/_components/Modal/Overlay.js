@@ -1,4 +1,4 @@
-function ModalOverlay({ children }) {
+function Overlay({ children }) {
   return (
     <div className="fixed top-0 left-0 w-full h-screen backdrop-blur-xs z-1000 transition-all duration-500">
       {children}
@@ -6,4 +6,4 @@ function ModalOverlay({ children }) {
   );
 }
 
-export default ModalOverlay;
+export default Overlay;

@@ -4,8 +4,8 @@ import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-import ModalOverlay from "./ModalOverlay";
-import ModalPanel from "./ModalPanel";
+import Overlay from "./Overlay";
+import Panel from "./Panel";
 
 const modalContext = createContext();
 
@@ -36,8 +36,8 @@ function Window({ children, name }) {
   if (name !== openName) return null;
 
   return createPortal(
-    <ModalOverlay>
-      <ModalPanel>
+    <Overlay>
+      <Panel>
         <button
           className="absolute top-4 right-5 cursor-pointer"
           onClick={close}
@@ -47,8 +47,8 @@ function Window({ children, name }) {
         <div className="bg-primary-900">
           {cloneElement(children, { onCloseModal: close })}
         </div>
-      </ModalPanel>
-    </ModalOverlay>,
+      </Panel>
+    </Overlay>,
     document.body,
   );
 }
