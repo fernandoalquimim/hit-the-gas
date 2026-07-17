@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Slideshow from "./_components/Slideshow";
 import TextSlide from "./_components/TextSlide";
-import HeaderOverlay from "./_components/HeaderOverlay";
+import HeaderOverlay from "./_components/Header/HeaderOverlay";
 
 function Page() {
   return (
