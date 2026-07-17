@@ -9,7 +9,7 @@ const initialState = {
 
 const reservationContext = createContext();
 
-function ReservationContext({ children }) {
+function Context({ children }) {
   const [range, setRange] = useState(initialState);
   const [singleDate, setSingleDate] = useState(null);
   const [hasDriver, setHasDriver] = useState(false);
@@ -47,10 +47,10 @@ function useReservation() {
 
   if (!context)
     throw new Error(
-      "useReservation hook being used outside ReservationContext",
+      "useReservation hook being used outside Reservation Context",
     );
 
   return context;
 }
 
-export { ReservationContext, useReservation };
+export { Context, useReservation };

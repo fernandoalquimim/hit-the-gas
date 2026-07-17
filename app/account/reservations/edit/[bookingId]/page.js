@@ -1,6 +1,6 @@
 import { getBooking, getCar } from "@/app/_lib/data-services";
 import Car from "@/app/_components/Car/Car";
-import Reservation from "@/app/_components/Reservation";
+import Reservation from "@/app/_components/Reservation/Reservation";
 
 async function Page({ params }) {
   const booking = await getBooking(params.bookingId);

@@ -1,11 +1,12 @@
 import { eachDayOfInterval } from "date-fns";
+
 import { auth } from "@/app/_lib/auth";
 import { getBookedDatesByCarId, getSettings } from "@/app/_lib/data-services";
-import { ReservationContext } from "./ReservationContext";
+import { Context } from "./Context";
 import DateSelector from "./DateSelector";
 import DriverSelector from "./DriverSelector";
 import LoginMessage from "./LoginMessage";
-import ReservationForm from "./ReservationForm";
+import Form from "./Form";
 
 async function Reservation({ car, booking }) {
   const session = await auth();
@@ -29,7 +30,7 @@ async function Reservation({ car, booking }) {
   );
 
   return (
-    <ReservationContext>
+    <Context>
       <div className="@container">
         <DriverSelector />
         <div className="grid grid-cols-2 @max-[67rem]:grid-cols-1 border border-primary-800">
@@ -40,13 +41,13 @@ async function Reservation({ car, booking }) {
             booking={booking}
           />
           {session?.user ? (
-            <ReservationForm user={session.user} car={car} booking={booking} />
+            <Form user={session.user} car={car} booking={booking} />
           ) : (
             <LoginMessage />
           )}
         </div>
       </div>
-    </ReservationContext>
+    </Context>
   );
 }
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { createBooking, updateBooking } from "@/app/_lib/actions";
-import { useReservation } from "./ReservationContext";
-import SubmitButton from "./SubmitButton";
-import ClientInfo from "./ClientInfo";
+import { useReservation } from "./Context";
+import SubmitButton from "../SubmitButton";
+import ClientInfo from "../ClientInfo";
 
-function ReservationForm({ user, car, booking }) {
+function Form({ user, car, booking }) {
   const { hasDriver, range, resetAllStates, numDays } = useReservation();
   const { id, maxCapacity, regularPrice, discount } = car;
   const { id: bookingId, numPeople, observations } = booking || {};
@@ -102,4 +102,4 @@ function ReservationForm({ user, car, booking }) {
   );
 }
 
-export default ReservationForm;
+export default Form;
