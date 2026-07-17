@@ -8,16 +8,16 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "@/app/_styles/carSlideShow.css";
+import "@/app/_styles/carousel.css";
 
-import GaleryModal from "./Modals/Galery/GaleryModal";
+import Modal from "./Modal";
 
-function Galery({ images }) {
+function Carousel({ images }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   return (
-    <GaleryModal>
-      <GaleryModal.Open opens={"galery"}>
+    <Modal>
+      <Modal.Open opens={"carousel"}>
         <Swiper
           navigation={true}
           pagination={{
@@ -39,8 +39,8 @@ function Galery({ images }) {
             </SwiperSlide>
           ))}
         </Swiper>
-      </GaleryModal.Open>
-      <GaleryModal.Window name={"galery"}>
+      </Modal.Open>
+      <Modal.Window name={"carousel"}>
         <div className="relative w-[80dvw] h-[80dvh] flex flex-col items-center">
           <Swiper
             navigation={true}
@@ -64,15 +64,15 @@ function Galery({ images }) {
                     marginTop: "auto",
                     marginBottom: "auto",
                   }}
-                  className="keep-galery-open select-none"
+                  className="swiper-keep-open select-none"
                 />
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-      </GaleryModal.Window>
-    </GaleryModal>
+      </Modal.Window>
+    </Modal>
   );
 }
 
-export default Galery;
+export default Carousel;

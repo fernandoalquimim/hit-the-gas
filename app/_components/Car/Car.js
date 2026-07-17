@@ -13,8 +13,8 @@ import {
 } from "@heroicons/react/24/solid";
 
 import { formatCurrency } from "@/app/_utils/helpers";
-import TextExpander from "./TextExpander";
-import CarGalery from "./CarGalery";
+import TextExpander from "../TextExpander";
+import CarCarousel from "./CarCarousel";
 
 function Car({ car, booking }) {
   const {
@@ -50,7 +50,7 @@ function Car({ car, booking }) {
                 <Image src={image} fill className="object-cover" alt={name} />
               }
             >
-              <CarGalery car={car} />
+              <CarCarousel car={car} />
             </Suspense>
           )}
           <div className="z-10 absolute top-0 left-0 flex bg-primary-950 px-4 py-2 gap-5 max-w-[95%] @min-[574px]/car:hidden">

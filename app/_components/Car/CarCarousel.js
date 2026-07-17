@@ -1,9 +1,9 @@
 import Image from "next/image";
 import { getCarImages } from "@/app/_lib/data-services";
 
-import Galery from "./Galery";
+import Carousel from "../Carousel/Carousel";
 
-async function CarGalery({ car }) {
+async function CarCarousel({ car }) {
   const images = await getCarImages(car.id);
   const { image } = car;
 
@@ -12,7 +12,7 @@ async function CarGalery({ car }) {
 
   const displayImages = [image, ...images.filter((i) => i !== image)];
 
-  return <Galery images={displayImages} />;
+  return <Carousel images={displayImages} />;
 }
 
-export default CarGalery;
+export default CarCarousel;

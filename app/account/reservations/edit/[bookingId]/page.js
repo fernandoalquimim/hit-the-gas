@@ -1,5 +1,5 @@
 import { getBooking, getCar } from "@/app/_lib/data-services";
-import Car from "@/app/_components/Car";
+import Car from "@/app/_components/Car/Car";
 import Reservation from "@/app/_components/Reservation";
 
 async function Page({ params }) {

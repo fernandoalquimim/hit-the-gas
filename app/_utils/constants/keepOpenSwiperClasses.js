@@ -1,9 +1,9 @@
-const keepGaleryOpenClasses = [
+const keepOpenSwiperClasses = [
   "swiper-button-next",
   "swiper-button-prev",
   "swiper-pagination",
   "swiper-pagination-bullet",
-  "keep-galery-open",
+  "swiper-keep-open",
 ];
 
-export default keepGaleryOpenClasses;
+export default keepOpenSwiperClasses;

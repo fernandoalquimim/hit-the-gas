@@ -11,11 +11,11 @@ import {
 import { createPortal } from "react-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-import keepGaleryOpenClasses from "@/app/_utils/constants/keepGaleryOpenClasses";
+import keepOpenSwiperClasses from "@/app/_utils/constants/keepOpenSwiperClasses";
 
 const modalContext = createContext();
 
-function GaleryModal({ children }) {
+function Modal({ children }) {
   const [openName, setOpenName] = useState("");
 
   const open = setOpenName;
@@ -44,7 +44,7 @@ function Window({ children, name }) {
     function handleClick(e) {
       if (!ref?.current?.contains(e.target)) return;
 
-      if (!keepGaleryOpenClasses.some((c) => e.target.classList.contains(c)))
+      if (!keepOpenSwiperClasses.some((c) => e.target.classList.contains(c)))
         close();
     }
 
@@ -74,7 +74,7 @@ function Window({ children, name }) {
   );
 }
 
-GaleryModal.Open = Open;
-GaleryModal.Window = Window;
+Modal.Open = Open;
+Modal.Window = Window;
 
-export default GaleryModal;
+export default Modal;
