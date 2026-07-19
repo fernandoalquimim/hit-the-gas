@@ -1,5 +1,5 @@
 import { getManufacturers } from "@/app/_lib/data-services";
-import Selector from "./Selector";
+import Selector from "./components/Selector";
 
 async function Manufacturer({ selected }) {
   const manufacturers = await getManufacturers();
