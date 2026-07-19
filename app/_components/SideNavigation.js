@@ -1,8 +1,8 @@
 "use client";
 
-import { CalendarDaysIcon, UserIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { CalendarDaysIcon, UserIcon } from "@heroicons/react/24/solid";
 
 import SignOutButton from "./SignOutButton";
 
