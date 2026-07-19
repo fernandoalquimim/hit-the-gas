@@ -14,7 +14,7 @@ import {
 
 import { formatCurrency } from "@/app/_utils/helpers";
 import TextExpander from "../TextExpander";
-import CarCarousel from "./CarCarousel";
+import CarCarousel from "./components/CarCarousel";
 
 function Car({ car, booking }) {
   const {

@@ -1,5 +1,5 @@
 import { getCars } from "@/app/_lib/data-services";
-import CarCard from "./CarCard";
+import CarCard from "./components/CarCard";
 
 async function CarsList({ manufacturersIds }) {
   const cars = await getCars(manufacturersIds);
