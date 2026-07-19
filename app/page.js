@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Slideshow from "./_components/Slideshow";
+import Slideshow from "./_components/Slideshow/Slideshow";
 import TextSlide from "./_components/TextSlide";
 import HeaderOverlay from "./_components/Header/HeaderOverlay";
 
