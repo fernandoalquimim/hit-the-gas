@@ -1,5 +1,5 @@
-import Navigation from "./Navigation";
-import SmallNavigation from "./SmallNavigation";
+import Navigation from "./components/Navigation";
+import SmallNavigation from "./components/SmallNavigation";
 
 function Header() {
   return (
