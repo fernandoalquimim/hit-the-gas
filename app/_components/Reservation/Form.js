@@ -3,7 +3,7 @@
 import { createBooking, updateBooking } from "@/app/_lib/actions";
 import { useReservation } from "./Context";
 import SubmitButton from "../SubmitButton";
-import ClientInfo from "../ClientInfo";
+import ClientInfo from "./ClientInfo";
 
 function Form({ user, car, booking }) {
   const { hasDriver, range, resetAllStates, numDays } = useReservation();
