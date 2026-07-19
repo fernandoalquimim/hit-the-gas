@@ -1,5 +1,5 @@
-import Button from "../Button";
-import ReservationCard from "./ReservationCard";
+import Button from "../../Button";
+import ReservationCard from "../ReservationCard";
 
 function ReservationDeleteInfo({ booking, onCloseModal, onConfirm }) {
   return (

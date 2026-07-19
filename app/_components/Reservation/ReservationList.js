@@ -2,7 +2,7 @@
 
 import { useOptimistic } from "react";
 
-import ReservationCard from "./ReservationCard";
+import ReservationCard from "./components/ReservationCard";
 import { deleteReservation } from "@/app/_lib/actions";
 
 function ReservationList({ bookings }) {

@@ -2,11 +2,11 @@ import { eachDayOfInterval } from "date-fns";
 
 import { auth } from "@/app/_lib/auth";
 import { getBookedDatesByCarId, getSettings } from "@/app/_lib/data-services";
-import { Context } from "./Context";
-import DateSelector from "./DateSelector";
-import DriverSelector from "./DriverSelector";
-import LoginMessage from "./LoginMessage";
-import Form from "./Form";
+import { Context } from "./context/Context";
+import DateSelector from "./components/DateSelector";
+import DriverSelector from "./components/DriverSelector";
+import LoginMessage from "./components/LoginMessage";
+import Form from "./components/Form";
 
 async function Reservation({ car, booking }) {
   const session = await auth();

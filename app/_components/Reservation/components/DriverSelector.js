@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { useReservation } from "./Context";
+import { useReservation } from "../context/Context";
 
 import pilot from "@/public/driver.png";
 

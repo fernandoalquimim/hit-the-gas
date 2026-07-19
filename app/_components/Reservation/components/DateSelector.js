@@ -9,7 +9,7 @@ import {
   isWithinInterval,
 } from "date-fns";
 
-import { useReservation } from "./Context";
+import { useReservation } from "../context/Context";
 
 import "react-day-picker/dist/style.css";
 

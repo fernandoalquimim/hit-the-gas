@@ -2,8 +2,8 @@ import Image from "next/image";
 import { formatDistance, format, isPast, isToday, parseISO } from "date-fns";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-import ReservationEditLink from "./ReservationEditLink";
-import ReservationDeleteButton from "./ReservationDeleteButton";
+import ReservationEditLink from "./components/ReservationEditLink";
+import ReservationDeleteButton from "./components/ReservationDeleteButton";
 
 export const formatDistanceFromNow = (dateStr) =>
   formatDistance(parseISO(dateStr), new Date(), {

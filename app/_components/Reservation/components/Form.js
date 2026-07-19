@@ -1,8 +1,8 @@
 "use client";
 
 import { createBooking, updateBooking } from "@/app/_lib/actions";
-import { useReservation } from "./Context";
-import SubmitButton from "../SubmitButton";
+import { useReservation } from "../context/Context";
+import SubmitButton from "../../SubmitButton";
 import ClientInfo from "./ClientInfo";
 
 function Form({ user, car, booking }) {
