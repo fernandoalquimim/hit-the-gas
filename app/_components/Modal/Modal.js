@@ -4,8 +4,8 @@ import { cloneElement, createContext, useContext, useState } from "react";
 import { createPortal } from "react-dom";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 
-import Overlay from "./Overlay";
-import Panel from "./Panel";
+import Overlay from "./components/Overlay";
+import Panel from "./components/Panel";
 
 const modalContext = createContext();
 
