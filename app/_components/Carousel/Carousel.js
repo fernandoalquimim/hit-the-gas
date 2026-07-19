@@ -10,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "@/app/_styles/carousel.css";
 
-import Modal from "./Modal";
+import Modal from "./components/Modal";
 
 function Carousel({ images }) {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
