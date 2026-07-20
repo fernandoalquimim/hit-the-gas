@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 
-import { useReservation } from "../context/Context";
+import { useBooking } from "../context/Context";
 
 import pilot from "@/public/driver.png";
 
 function DriverSelector() {
-  const { hasDriver, setHasDriver, resetRange, setSingleDate } =
-    useReservation();
+  const { hasDriver, setHasDriver, resetRange, setSingleDate } = useBooking();
 
   return (
     <label className="driver-checkbox-container">

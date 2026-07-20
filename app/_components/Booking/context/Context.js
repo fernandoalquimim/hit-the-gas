@@ -7,7 +7,7 @@ const initialState = {
   to: undefined,
 };
 
-const reservationContext = createContext();
+const bookingContext = createContext();
 
 function Context({ children }) {
   const [range, setRange] = useState(initialState);
@@ -23,7 +23,7 @@ function Context({ children }) {
   };
 
   return (
-    <reservationContext.Provider
+    <bookingContext.Provider
       value={{
         range,
         setRange,
@@ -38,19 +38,17 @@ function Context({ children }) {
       }}
     >
       {children}
-    </reservationContext.Provider>
+    </bookingContext.Provider>
   );
 }
 
-function useReservation() {
-  const context = useContext(reservationContext);
+function useBooking() {
+  const context = useContext(bookingContext);
 
   if (!context)
-    throw new Error(
-      "useReservation hook being used outside Reservation Context",
-    );
+    throw new Error("useBooking hook being used outside Booking Context");
 
   return context;
 }
 
-export { Context, useReservation };
+export { Context, useBooking };

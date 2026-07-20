@@ -1,6 +1,6 @@
 import { auth } from "@/app/_lib/auth";
 import { getBookings } from "@/app/_lib/data-services";
-import ReservationList from "@/app/_components/Reservation/ReservationList";
+import BookingList from "@/app/_components/Booking/BookingList";
 
 export const metadata = {
   title: "Reservations",
@@ -20,7 +20,7 @@ async function Page() {
           </a>
         </p>
       ) : (
-        <ReservationList bookings={bookings} />
+        <BookingList bookings={bookings} />
       )}
     </div>
   );

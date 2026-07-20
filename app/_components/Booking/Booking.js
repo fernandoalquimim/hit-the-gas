@@ -8,7 +8,7 @@ import DriverSelector from "./components/DriverSelector";
 import LoginMessage from "./components/LoginMessage";
 import Form from "./components/Form";
 
-async function Reservation({ car, booking }) {
+async function Booking({ car, booking }) {
   const session = await auth();
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
@@ -51,4 +51,4 @@ async function Reservation({ car, booking }) {
   );
 }
 
-export default Reservation;
+export default Booking;

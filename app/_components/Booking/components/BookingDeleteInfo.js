@@ -1,14 +1,14 @@
 import Button from "../../Button";
-import ReservationCard from "../ReservationCard";
+import BookingCard from "./BookingCard";
 
-function ReservationDeleteInfo({ booking, onCloseModal, onConfirm }) {
+function BookingDeleteInfo({ booking, onCloseModal, onConfirm }) {
   return (
     <div className="flex flex-col gap-5 w-[40vw] @container/bookings">
       <h1 className="text-2xl leading-8 font-medium">
         Are you sure you want to delete this reservation permanently?
       </h1>
 
-      <ReservationCard booking={booking} showActions={false} />
+      <BookingCard booking={booking} showActions={false} />
 
       <div className="flex justify-between gap-5 @max-[353px]/bookings:flex-col">
         <div className="flex items-center text-center text-accent-500 @max-[353px]/bookings:order-2 @max-[353px]/bookings:justify-center">
@@ -34,4 +34,4 @@ function ReservationDeleteInfo({ booking, onCloseModal, onConfirm }) {
   );
 }
 
-export default ReservationDeleteInfo;
+export default BookingDeleteInfo;

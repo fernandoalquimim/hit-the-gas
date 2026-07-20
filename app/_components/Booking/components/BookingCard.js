@@ -2,15 +2,15 @@ import Image from "next/image";
 import { formatDistance, format, isPast, isToday, parseISO } from "date-fns";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 
-import ReservationEditLink from "./components/ReservationEditLink";
-import ReservationDeleteButton from "./components/ReservationDeleteButton";
+import BookingEditLink from "./BookingEditLink";
+import BookingDeleteButton from "./BookingDeleteButton";
 
 export const formatDistanceFromNow = (dateStr) =>
   formatDistance(parseISO(dateStr), new Date(), {
     addSuffix: true,
   }).replace("about ", "");
 
-function ReservationCard({ booking, onDelete, showActions = true }) {
+function BookingCard({ booking, onDelete, showActions = true }) {
   const {
     id,
     startDate,
@@ -44,16 +44,16 @@ function ReservationCard({ booking, onDelete, showActions = true }) {
               </span>
               {showActions && (
                 <div className="absolute right-2 top-2 flex gap-2">
-                  <ReservationEditLink id={id} variation="mini">
+                  <BookingEditLink id={id} variation="mini">
                     <PencilIcon className="h-4.5 w-4.5" />
-                  </ReservationEditLink>
-                  <ReservationDeleteButton
+                  </BookingEditLink>
+                  <BookingDeleteButton
                     booking={booking}
                     onDelete={onDelete}
                     variation="mini"
                   >
                     <TrashIcon className="h-5 w-5" />
-                  </ReservationDeleteButton>
+                  </BookingDeleteButton>
                 </div>
               )}
             </>
@@ -105,18 +105,18 @@ function ReservationCard({ booking, onDelete, showActions = true }) {
       </div>
       {showActions && !isPast(startDate) ? (
         <div className="flex flex-col border-l border-primary-800 w-25 @max-[576px]/bookings:hidden">
-          <ReservationEditLink id={id}>
+          <BookingEditLink id={id}>
             <PencilIcon className="h-4.5 w-4.5 text-primary-600 group-hover:text-primary-800 transition-colors" />
             <span className="mt-1">Edit</span>
-          </ReservationEditLink>
-          <ReservationDeleteButton booking={booking} onDelete={onDelete}>
+          </BookingEditLink>
+          <BookingDeleteButton booking={booking} onDelete={onDelete}>
             <TrashIcon className="h-5 w-5 text-primary-600 group-hover:text-primary-800 transition-colors" />
             <span className="mt-1">Delete</span>
-          </ReservationDeleteButton>
+          </BookingDeleteButton>
         </div>
       ) : null}
     </div>
   );
 }
 
-export default ReservationCard;
+export default BookingCard;

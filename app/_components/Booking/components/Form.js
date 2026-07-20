@@ -1,12 +1,12 @@
 "use client";
 
 import { createBooking, updateBooking } from "@/app/_lib/actions";
-import { useReservation } from "../context/Context";
+import { useBooking } from "../context/Context";
 import SubmitButton from "../../SubmitButton";
 import ClientInfo from "./ClientInfo";
 
 function Form({ user, car, booking }) {
-  const { hasDriver, range, resetAllStates, numDays } = useReservation();
+  const { hasDriver, range, resetAllStates, numDays } = useBooking();
   const { id, maxCapacity, regularPrice, discount } = car;
   const { id: bookingId, numPeople, observations } = booking || {};
 

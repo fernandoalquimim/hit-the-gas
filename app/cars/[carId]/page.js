@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { getCar, getCars } from "@/app/_lib/data-services";
 import Main from "@/app/_components/Main";
 import Car from "@/app/_components/Car/Car";
-import Reservation from "@/app/_components/Reservation/Reservation";
+import Booking from "@/app/_components/Booking/Booking";
 import Spinner from "@/app/_components/Spinner";
 
 export async function generateMetadata({ params }) {
@@ -32,7 +32,7 @@ async function Page({ params }) {
         </h2>
 
         <Suspense fallback={<Spinner />}>
-          <Reservation car={car} />
+          <Booking car={car} />
         </Suspense>
       </div>
     </Main>

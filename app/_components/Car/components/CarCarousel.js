@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getCarImages } from "@/app/_lib/data-services";
 
-import Carousel from "../Carousel/Carousel";
+import Carousel from "../../Carousel/Carousel";
 
 async function CarCarousel({ car }) {
   const images = await getCarImages(car.id);

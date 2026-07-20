@@ -6,7 +6,7 @@ const variations = {
     "group flex items-center gap-2 uppercase text-xs font-bold text-primary-300 border-b border-primary-800 grow px-3 hover:bg-accent-600 transition-colors hover:text-primary-900",
 };
 
-function ReservationEditLink({ children, id, variation = "normal" }) {
+function BookingEditLink({ children, id, variation = "normal" }) {
   return (
     <Link
       href={`/account/reservations/edit/${id}`}
@@ -17,4 +17,4 @@ function ReservationEditLink({ children, id, variation = "normal" }) {
   );
 }
 
-export default ReservationEditLink;
+export default BookingEditLink;

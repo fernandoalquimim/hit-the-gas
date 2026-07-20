@@ -2,10 +2,10 @@
 
 import { useOptimistic } from "react";
 
-import ReservationCard from "./components/ReservationCard";
-import { deleteReservation } from "@/app/_lib/actions";
+import BookingCard from "./components/BookingCard";
+import { deleteBooking } from "@/app/_lib/actions";
 
-function ReservationList({ bookings }) {
+function BookingList({ bookings }) {
   const [optimisticBookings, optimisticDelete] = useOptimistic(
     bookings,
     (curBookings, bookingId) => {
@@ -15,13 +15,13 @@ function ReservationList({ bookings }) {
 
   async function handleDelete(bookingId) {
     optimisticDelete(bookingId);
-    await deleteReservation(bookingId);
+    await deleteBooking(bookingId);
   }
 
   return (
     <ul className="space-y-6 mb-6 @container/bookings">
       {optimisticBookings.map((booking) => (
-        <ReservationCard
+        <BookingCard
           key={booking.id}
           booking={booking}
           onDelete={handleDelete}
@@ -31,4 +31,4 @@ function ReservationList({ bookings }) {
   );
 }
 
-export default ReservationList;
+export default BookingList;

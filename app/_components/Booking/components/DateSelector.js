@@ -9,7 +9,7 @@ import {
   isWithinInterval,
 } from "date-fns";
 
-import { useReservation } from "../context/Context";
+import { useBooking } from "../context/Context";
 
 import "react-day-picker/dist/style.css";
 
@@ -34,7 +34,7 @@ function DateSelector({ settings, car, bookedDates, booking }) {
     setHasDriver,
     numDays,
     setNumDays,
-  } = useReservation();
+  } = useBooking();
 
   const { minBookingLength, maxBookingLength } = settings;
   const { regularPrice, discount } = car;
