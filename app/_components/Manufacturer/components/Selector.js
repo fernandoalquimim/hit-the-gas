@@ -26,6 +26,7 @@ function Selector({ manufacturers, selected }) {
   function handleFilter(selected) {
     const params = new URLSearchParams(searchParams);
 
+    params.delete("page");
     params.delete("selected");
     selected.forEach((s) => params.append("selected", s));
 

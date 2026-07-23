@@ -2,6 +2,7 @@ import { eachDayOfInterval } from "date-fns";
 import { notFound } from "next/navigation";
 
 import { supabase } from "./supabase";
+import { carsPerPage } from "@/app/_utils/constants/global";
 
 export async function getClient(email) {
   const { data } = await supabase
@@ -21,21 +22,31 @@ export async function createClient(newClient) {
   return data;
 }
 
-export async function getCars(selectedManufacturers = []) {
+export async function getCars(selectedManufacturers = [], page = 0) {
   let query = supabase
     .from("cars")
     .select(
       "id, name, maxCapacity, regularPrice, discount, image, brands(name,logo,dimensions)",
+      { count: "exact" },
     );
 
   if (selectedManufacturers.length)
     query = query.in("brandId", selectedManufacturers);
 
-  const { data, error } = await query;
+  if (page > 0) {
+    const from = carsPerPage * (page - 1);
+    const to = carsPerPage * page - 1;
+    query = query.range(from, to);
+  }
 
-  if (error) throw new Error("Cars could not be loaded");
+  const { data, error, count } = await query;
 
-  return data;
+  if (error) {
+    console.log(error);
+    throw new Error("Cars could not be loaded");
+  }
+
+  return { data, count };
 }
 
 export async function getCar(id) {

@@ -15,6 +15,8 @@ function Page({ searchParams }) {
     ? filter.map((f) => parseInt(f))
     : [parseInt(filter)];
 
+  const page = searchParams?.page ?? 1;
+
   return (
     <Main>
       <h1 className="text-2xl sm:text-4xl mb-3 text-accent-400 font-medium transition-all duration-300 ease-in-out">
@@ -35,7 +37,7 @@ function Page({ searchParams }) {
       <Manufacturer selected={manufacturersIds} />
 
       <Suspense fallback={<Spinner />} key={filter}>
-        <CarsList manufacturersIds={manufacturersIds} />
+        <CarsList manufacturersIds={manufacturersIds} page={page} />
       </Suspense>
     </Main>
   );
