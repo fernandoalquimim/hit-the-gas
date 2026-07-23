@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 
-import { getCar, getCars } from "@/app/_lib/data-services";
+import { getCar, getAllCars } from "@/app/_lib/data-services";
 import Main from "@/app/_components/Main";
 import Car from "@/app/_components/Car/Car";
 import Booking from "@/app/_components/Booking/Booking";
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
 }
 
 export async function generateStaticParams() {
-  const cars = await getCars();
+  const cars = await getAllCars();
   const ids = cars.map((c) => ({ carId: String(c.id) }));
   return ids;
 }

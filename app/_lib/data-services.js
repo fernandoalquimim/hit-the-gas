@@ -22,6 +22,17 @@ export async function createClient(newClient) {
   return data;
 }
 
+export async function getAllCars() {
+  const { data, error } = await supabase.from("cars").select("*");
+
+  if (error) {
+    console.log(error);
+    throw new Error("Cars could not be loaded");
+  }
+
+  return data;
+}
+
 export async function getCars(selectedManufacturers = [], page = 0) {
   let query = supabase
     .from("cars")
