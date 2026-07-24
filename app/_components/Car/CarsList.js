@@ -14,7 +14,9 @@ async function CarsList({ manufacturersIds, page }) {
           <CarCard car={car} key={car.id} />
         ))}
       </div>
-      <Pagination totalItems={count} />
+      <div className="flex justify-center mb-8">
+        <Pagination totalItems={count} />
+      </div>
     </>
   );
 }

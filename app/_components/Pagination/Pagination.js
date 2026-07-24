@@ -29,7 +29,7 @@ function Pagination({ totalItems }) {
   }
 
   return (
-    <div className="flex justify-center w-full">
+    <div className="flex justify-center">
       <div className="flex w-fit gap-12">
         <button
           className={`w-8 ${activePage > 1 ? "cursor-pointer" : ""}`}
@@ -37,7 +37,7 @@ function Pagination({ totalItems }) {
           disabled={activePage === 1}
         >
           <ChevronLeftIcon
-            className={`${activePage === 1 ? "text-primary-800" : "text-accent-400"} `}
+            className={`${activePage === 1 ? "text-primary-800" : "text-accent-400"}`}
           />
         </button>
 
@@ -70,7 +70,7 @@ function Pagination({ totalItems }) {
           disabled={activePage === pages.length}
         >
           <ChevronRightIcon
-            className={`${activePage === pages.length ? "text-primary-800" : "text-accent-400"} `}
+            className={`${activePage === pages.length ? "text-primary-800" : "text-accent-400"}`}
           />
         </button>
       </div>
