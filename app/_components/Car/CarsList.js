@@ -9,12 +9,12 @@ async function CarsList({ manufacturersIds, page }) {
 
   return (
     <>
-      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-8 mb-8 sliding-div">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-7 mb-6 sliding-div">
         {cars.map((car) => (
           <CarCard car={car} key={car.id} />
         ))}
       </div>
-      <div className="flex justify-center mb-8">
+      <div className="flex justify-center mb-4">
         <Pagination totalItems={count} />
       </div>
     </>

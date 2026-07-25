@@ -26,7 +26,7 @@ function CarCard({ car }) {
           />
         </div>
 
-        <div className="grow grid grid-cols-[1fr] grid-rows-[3fr_1fr] max-w-100 w-full">
+        <div className="grow grid grid-cols-[1fr] grid-rows-[2.8fr_0.8fr] @min-[413px]/card:max-w-100 w-full">
           <div className="p-3.5 flex flex-col justify-between gap-5">
             <div className="flex justify-between items-center gap-5">
               <div className="flex flex-col">
