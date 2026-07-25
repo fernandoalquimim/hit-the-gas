@@ -41,7 +41,7 @@ function Car({ car, booking }) {
   return (
     <div className="border border-primary-800 @container/car">
       <div className="relative grid grid-cols-1 @min-[951px]/car:grid-cols-[3fr_4fr] gap-6 @min-[951px]/car:gap-12">
-        <div className="relative w-full h-[50dvh] @min-[951px]/car:w-106 @min-[951px]/car:h-full @min-[951px]/car:max-h-[80dvh] @min-[951px]/car:scale-[1_1.10] @min-[951px]/car:-translate-x-3 transition-all duration-300">
+        <div className="relative w-full h-[50dvh] @min-[951px]/car:w-125 @min-[951px]/car:h-[calc(100%+64px)] @min-[951px]/car:max-h-[90dvh] @min-[951px]/car:-translate-y-8 @min-[951px]/car:-translate-x-px transition-all duration-300">
           {editMode ? (
             <Image src={image} fill className="object-cover" alt={name} />
           ) : (
