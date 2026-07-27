@@ -5,8 +5,8 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { carsPerPage } from "@/app/_utils/constants/global";
 
-function Pagination({ totalItems }) {
-  const [activePage, setActivePage] = useState(1);
+function Pagination({ totalItems, currentPage }) {
+  const [activePage, setActivePage] = useState(Number(currentPage));
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
