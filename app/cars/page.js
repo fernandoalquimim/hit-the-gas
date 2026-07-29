@@ -5,6 +5,8 @@ import CarsList from "@/app/_components/Car/CarsList";
 import Spinner from "@/app/_components/Spinner";
 import Manufacturer from "@/app/_components/Manufacturer/Manufacturer";
 
+export const revalidate = 0;
+
 export const metadata = {
   title: "Cars",
 };
@@ -16,6 +18,9 @@ function Page({ searchParams }) {
     : [parseInt(filter)];
 
   const page = searchParams?.page ?? 1;
+
+  const reducedParams =
+    manufacturersIds.reduce((acc, cur) => acc + cur, 0) + Number(page);
 
   return (
     <Main>
@@ -36,7 +41,7 @@ function Page({ searchParams }) {
 
       <Manufacturer selected={manufacturersIds} />
 
-      <Suspense fallback={<Spinner />} key={filter}>
+      <Suspense fallback={<Spinner />} key={reducedParams}>
         <CarsList manufacturersIds={manufacturersIds} page={page} />
       </Suspense>
     </Main>
