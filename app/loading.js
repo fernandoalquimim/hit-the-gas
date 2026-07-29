@@ -4,7 +4,9 @@ import Main from "./_components/Main";
 export default function Loading() {
   return (
     <Main>
-      <Spinner />
+      <div className="flex flex-col justify-start items-center py-50 h-full">
+        <Spinner />
+      </div>
     </Main>
   );
 }
