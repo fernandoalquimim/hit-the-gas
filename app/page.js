@@ -10,25 +10,33 @@ function Page() {
       <HeaderOverlay />
       <Slideshow />
       <div className="absolute z-10 justify-self-center top-60 text-center flex flex-col items-center gap-4 sliding-div">
-        <div>
+        <div className="block xl:hidden">
           <h1
-            className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] xl:inline"
+            className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
             data-text="give me fuel,"
           >
             give me fuel,
           </h1>
-          <div className="w-fit mx-auto xl:inline">
+          <div className="w-fit mx-auto">
             <h1
-              className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] xl:inline"
+              className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
               data-text="give me fire,"
             >
               give me fire,
             </h1>
           </div>
         </div>
+        <div className="block max-xl:hidden">
+          <h1
+            className="rubik-upper-shadow title-gratient-bg text-7xl"
+            data-text="Give me fuel, give me fire,"
+          >
+            Give me fuel, give me fire,
+          </h1>
+        </div>
         <div>
           <h3
-            className="rubik-upper-shadow subtitle-gratient-bg text-2xl sm:text-4xl"
+            className="rubik-upper-shadow subtitle-gratient-bg text-3xl sm:text-4xl transition-all duration-300"
             data-text="give me that wich I desire!"
           >
             give me that wich I desire!
@@ -37,7 +45,7 @@ function Page() {
         <div className="mt-8">
           <Link
             href="/cars"
-            className="bg-primary-1450 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-1550 transition-all"
+            className="bg-primary-1450 px-8 py-5 text-primary-800 text-lg font-semibold hover:bg-primary-1550 transition-all duration-200"
           >
             Explore iconic supercars
           </Link>
