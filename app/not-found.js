@@ -7,7 +7,7 @@ export const metadata = {
 function NotFound() {
   return (
     <main className="flex justify-center items-center flex-col gap-6">
-      <h1 className="text-3xl font-semibold">
+      <h1 className="text-3xl max-sm:text-2xl font-semibold transition-all duration-300">
         This page could not be found :(
       </h1>
       <Link
