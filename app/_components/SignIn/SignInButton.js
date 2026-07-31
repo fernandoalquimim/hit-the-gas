@@ -3,16 +3,16 @@
 import { useSearchParams } from "next/navigation";
 
 import { signInAction } from "@/app/_lib/actions";
-import SignInButton from "./SignInButton";
+import Button from "./components/Button";
 
-function SignInForm() {
+function SignInButton() {
   const params = useSearchParams();
 
   return (
     <form action={() => signInAction(params.get("callbackUrl"))}>
-      <SignInButton />
+      <Button />
     </form>
   );
 }
 
-export default SignInForm;
+export default SignInButton;

@@ -2,9 +2,9 @@
 
 import { useFormStatus } from "react-dom";
 
-import SpinnerMini from "./SpinnerMini";
+import SpinnerMini from "@/app/_components/SpinnerMini";
 
-function SignInButton() {
+function Button() {
   const { pending } = useFormStatus();
 
   return (
@@ -27,4 +27,4 @@ function SignInButton() {
   );
 }
 
-export default SignInButton;
+export default Button;
