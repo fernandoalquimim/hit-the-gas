@@ -83,12 +83,11 @@ function Selector({ manufacturers, selected }) {
           return (
             <SwiperSlide key={i}>
               <label
-                className="cursor-pointer"
-                width={logoWidth}
-                height={logoHeight}
+                className="cursor-pointer block mx-auto"
+                style={{ width: logoWidth, height: logoHeight }}
                 key={m.id}
               >
-                <div className="relative flex justify-around items-center w-fit h-fit ">
+                <div className="relative flex justify-around items-center w-fit h-fit">
                   <Image
                     src={m.logo}
                     alt="logo"
