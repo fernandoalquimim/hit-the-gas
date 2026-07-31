@@ -95,6 +95,7 @@ function Selector({ manufacturers, selected }) {
                     width={logoWidth}
                     height={logoHeight}
                     style={{ height: `${logoHeight}px` }}
+                    className="select-none"
                   />
                   {selectedIds.includes(m.id) && (
                     <div className="absolute top-0 right-0 w-2.5 h-2.5 rounded-[50%] bg-[#5fa212] border border-solid border-accent-50" />
