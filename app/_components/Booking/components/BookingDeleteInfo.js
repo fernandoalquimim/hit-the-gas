@@ -3,9 +3,9 @@ import BookingCard from "./BookingCard";
 
 function BookingDeleteInfo({ booking, onCloseModal, onConfirm }) {
   return (
-    <div className="flex flex-col gap-5 w-[40vw] @container/bookings">
+    <div className="flex flex-col gap-5 max-[500px]:w-[60vw] w-[40vw] @container/bookings">
       <h1 className="text-2xl leading-8 font-medium">
-        Are you sure you want to delete this reservation permanently?
+        Delete this reservation permanently?
       </h1>
 
       <BookingCard booking={booking} showActions={false} />

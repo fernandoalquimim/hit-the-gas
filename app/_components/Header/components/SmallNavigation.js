@@ -16,7 +16,7 @@ async function SmallNavigation() {
         id="header-content"
         className="px-3 py-2 w-full rounded-md transition-all duration-300 flex flex-col gap-2"
       >
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center max-[500px]:gap-2.5">
           <Logo />
           <input type="checkbox" id="navbar-active" className="hidden" />
           <label
@@ -24,10 +24,10 @@ async function SmallNavigation() {
             className="cursor-pointer"
             id="label-menu"
           >
-            <Bars3Icon className="h-10 w-10 text-primary-1450" />
+            <Bars3Icon className="max-[500px]:h-8 h-10 max-[500px]:w-8 w-10 text-primary-1450" />
           </label>
           <label className="cursor-pointer hidden" id="label-close">
-            <XMarkIcon className="h-10 w-10 text-primary-1450" />
+            <XMarkIcon className="max-[500px]:h-8 h-10 max-[500px]:w-8 w-10 text-primary-1450" />
           </label>
         </div>
         <CustomNavbarListContainer>

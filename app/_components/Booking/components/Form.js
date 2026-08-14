@@ -44,7 +44,7 @@ function Form({ user, car, booking }) {
           }
           resetAllStates();
         }}
-        className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col grow h-full"
+        className="bg-primary-900 py-10 @max-[27.25rem]:px-8 px-16 text-lg flex gap-5 flex-col grow h-full"
       >
         {booking && <input type="hidden" name="id" value={bookingId} />}
 

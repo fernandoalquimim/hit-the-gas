@@ -9,7 +9,7 @@ function Button() {
 
   return (
     <button
-      className={`flex items-center gap-6 text-lg border border-primary-300 px-10 py-4 font-medium transition-all duration-200 ${!pending ? "cursor-pointer hover:scale-110" : "cursor-not-allowed"}`}
+      className={`flex items-center gap-6 text-lg border border-primary-300 px-8 py-4 font-medium transition-all duration-200 ${!pending ? "cursor-pointer hover:scale-110" : "cursor-not-allowed"}`}
       disabled={pending}
     >
       {!pending ? (

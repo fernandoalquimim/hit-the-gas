@@ -12,14 +12,14 @@ function Page() {
       <div className="absolute z-10 justify-self-center top-60 text-center flex flex-col items-center gap-4 sliding-div">
         <div className="block xl:hidden">
           <h1
-            className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
+            className="rubik-upper-shadow title-gratient-bg max-[500px]:text-5xl text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
             data-text="give me fuel,"
           >
             give me fuel,
           </h1>
           <div className="w-fit mx-auto">
             <h1
-              className="rubik-upper-shadow title-gratient-bg text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
+              className="rubik-upper-shadow title-gratient-bg max-[500px]:text-5xl text-6xl sm:text-7xl leading-[normal] transition-all duration-300"
               data-text="give me fire,"
             >
               give me fire,
@@ -36,7 +36,7 @@ function Page() {
         </div>
         <div>
           <h3
-            className="rubik-upper-shadow subtitle-gratient-bg text-3xl sm:text-4xl transition-all duration-300"
+            className="rubik-upper-shadow subtitle-gratient-bg max-[500px]:text-xl text-3xl sm:text-4xl transition-all duration-300"
             data-text="give me that wich I desire!"
           >
             give me that wich I desire!
