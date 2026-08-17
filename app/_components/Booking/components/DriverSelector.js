@@ -17,7 +17,7 @@ function DriverSelector() {
         </div>
         <div className="flex flex-col items-center">
           <h2 className="text-2xl text-center">
-            I want an expert driver <br /> take the wheel
+            I want an expert driver <br /> takes the wheel
           </h2>
           <h4 className="text-primary-600 text-md text-center">
             Only for the day selected

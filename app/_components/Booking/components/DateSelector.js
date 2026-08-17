@@ -86,7 +86,9 @@ function DateSelector({ settings, car, bookedDates, booking }) {
   }, [hasDriver, displayRange]);
 
   return (
-    <div className="flex flex-col justify-between">
+    <div
+      className={`flex flex-col justify-between ${hasDriver ? "gap-7" : "gap-0.5"}`}
+    >
       <DayPicker
         className="pt-12"
         classNames={{
@@ -108,6 +110,12 @@ function DateSelector({ settings, car, bookedDates, booking }) {
           bookedDates.some((date) => isSameDay(date, curDate))
         }
       />
+
+      {!hasDriver && (
+        <span className="mx-auto text-center text-primary-700">
+          * Return date is at least the day after the one selected
+        </span>
+      )}
 
       <div className="flex items-center justify-center px-8 bg-accent-500 text-primary-800 @lg:h-16.25 @max-lg:flex-col @max-lg:py-3 transition-all duration-300">
         <div className="flex justify-between items-center @max-lg:flex-col @max-lg:items-end @max-lg:gap-2.5 @max-lg:min-w-56 @lg:max-w-130.5 @lg:w-full">
