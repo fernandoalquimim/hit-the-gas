@@ -1,38 +1,19 @@
 ![Hit the Gas](https://github.com/fernandoalquimim/hit-the-gas/blob/main/public/company-logo.png)
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## What is this application?!
 
-## Getting Started
+This application is a supercar rental website of a dummy company called "Hit the Gas", in which you can log in using your Google account, make a reservation for some days or a specific date and manage your reservations.
 
-First, run the development server:
+You can explore this application on its [Live Demo](https://hit-the-gas.vercel.app/) to see how it feels like.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The purpose of this repository is be part of my portfolio as a [Software Engineer](https://www.linkedin.com/in/fernando-alquimim/) and it was done exploring the React Framework [Next.js](https://nextjs.org/).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+It is also using [NextAuth.js](https://next-auth.js.org/) for user authentication with Google accounts; [Supabase](https://supabase.com/) as a remote database throughout its data services API; and [Tailwind CSS](https://tailwindcss.com/) for a responsive design.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+By the way, all the pages are responsiveness and are rendered very well on any devices with a width of 375 px and up.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Contact me
 
-## Learn More
+LinkedIn: [https://www.linkedin.com/in/fernando-alquimim/](https://www.linkedin.com/in/fernando-alquimim/)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+E-mail: [fernando.freire.alquimim@gmail.com](mailto:fernando.freire.alquimim@gmail.com)
