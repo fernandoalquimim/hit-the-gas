@@ -132,12 +132,12 @@ export async function getBookedDatesByCarId(carId) {
 
   // Converting to actual dates to be displayed in the date picker
   const bookedDates = data
-    .map((booking) => {
-      return eachDayOfInterval({
+    .map((booking) =>
+      eachDayOfInterval({
         start: new Date(booking.startDate),
         end: new Date(booking.endDate),
-      });
-    })
+      }),
+    )
     .flat();
 
   console.log("RETURN getBookedDatesByCarId: bookedDates = ", bookedDates);
