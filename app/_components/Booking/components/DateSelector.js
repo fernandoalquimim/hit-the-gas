@@ -24,6 +24,7 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, car, bookedDates, booking }) {
+  console.log("DateSelector.js: bookedDates = ", bookedDates);
   const {
     range,
     setRange,
@@ -84,8 +85,6 @@ function DateSelector({ settings, car, bookedDates, booking }) {
           : 0,
     );
   }, [hasDriver, displayRange]);
-
-  console.log("DateSelector.js: bookedDates = ", bookedDates);
 
   return (
     <div
