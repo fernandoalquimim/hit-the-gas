@@ -106,16 +106,16 @@ function DateSelector({ settings, car, bookedDates, booking }) {
         captionLayout="dropdown"
         numberOfMonths={2}
         disabled={(curDate) => {
-          const isPast = isPast(curDate);
+          const isDatePast = isPast(curDate);
           const dateAlreadyBooked = bookedDates.some((date) =>
             isSameDay(date, curDate),
           );
 
           console.log("curDate", curDate);
-          console.log("isPast", isPast);
+          console.log("isDatePast", isDatePast);
           console.log("dateAlreadyBooked", dateAlreadyBooked);
 
-          return isPast || dateAlreadyBooked;
+          return isDatePast || dateAlreadyBooked;
         }}
       />
 
