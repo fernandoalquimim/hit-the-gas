@@ -24,7 +24,11 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, car, bookedDates, booking }) {
-  console.log("DateSelector.js: bookedDates = ", bookedDates);
+  const datesNoTZ = bookedDates.map((date) => {
+    const [year, mouth, day] = date.split("-").map(Number);
+    return new Date(year, mouth - 1, day);
+  });
+  console.log("DateSelector.js: datesNoTZ = ", datesNoTZ);
   const {
     range,
     setRange,
