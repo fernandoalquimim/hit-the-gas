@@ -22,14 +22,12 @@ async function Booking({ car, booking }) {
       })
     : [];
 
-  const displayingBookedDates = bookedDates
-    .filter(
-      (booked) =>
-        !editingReservedDates.some(
-          (editing) => editing.getTime() === booked.getTime(),
-        ),
-    )
-    .map((date) => date.getTime());
+  const displayingBookedDates = bookedDates.filter(
+    (booked) =>
+      !editingReservedDates.some(
+        (editing) => editing.getTime() === booked.getTime(),
+      ),
+  );
   console.log("Booking.js: displayingBookedDates = ", displayingBookedDates);
 
   return (
