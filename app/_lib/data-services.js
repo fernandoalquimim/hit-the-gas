@@ -140,7 +140,7 @@ export async function getBookedDatesByCarId(carId) {
     })
     .flat();
 
-  console.log("RETURN: bookedDates = ", bookedDates);
+  console.log("RETURN getBookedDatesByCarId: bookedDates = ", bookedDates);
   return bookedDates;
 }
 

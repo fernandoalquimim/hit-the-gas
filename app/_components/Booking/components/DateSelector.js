@@ -85,6 +85,8 @@ function DateSelector({ settings, car, bookedDates, booking }) {
     );
   }, [hasDriver, displayRange]);
 
+  console.log("DateSelector.js: bookedDates = ", bookedDates);
+
   return (
     <div
       className={`flex flex-col justify-between ${hasDriver ? "gap-7" : "gap-0.5"}`}

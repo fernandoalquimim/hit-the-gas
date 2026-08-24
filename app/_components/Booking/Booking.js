@@ -28,6 +28,7 @@ async function Booking({ car, booking }) {
         (editing) => editing.getTime() === booked.getTime(),
       ),
   );
+  console.log("Booking.js: displayingBookedDates = ", displayingBookedDates);
 
   return (
     <Context>
