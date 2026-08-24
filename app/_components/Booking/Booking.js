@@ -30,7 +30,6 @@ async function Booking({ car, booking }) {
         ),
     )
     .map((date) => date.toISOString().split("T")[0]);
-  console.log("Booking.js: displayingBookedDates = ", displayingBookedDates);
 
   return (
     <Context>

@@ -43,7 +43,6 @@ function DateSelector({ settings, car, bookedDates, booking }) {
     const [year, mouth, day] = date.split("-").map(Number);
     return new Date(year, mouth - 1, day);
   });
-  console.log("DateSelector.js: datesNoTZ = ", datesNoTZ);
   const displayRange = isAlreadyBooked(range, datesNoTZ) ? {} : range;
 
   const carPrice = numDays * (regularPrice - discount);
