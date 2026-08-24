@@ -38,7 +38,7 @@ async function Booking({ car, booking }) {
           <DateSelector
             settings={settings}
             car={car}
-            reservedDates={displayingBookedDates}
+            bookedDates={displayingBookedDates}
             booking={booking}
           />
           {session?.user ? (
