@@ -16,8 +16,8 @@ function Form({ user, car, booking }) {
   const carPrice = regularPrice - discount;
 
   const bookingData = {
-    startDate,
-    endDate,
+    startDate: startDate.setUTCHours(0, 0, 0, 0),
+    endDate: endDate.setUTCHours(0, 0, 0, 0),
     numDays,
     carPrice,
     hasDriver,
