@@ -111,11 +111,14 @@ function DateSelector({ settings, car, bookedDates, booking }) {
             isSameDay(date, curDate),
           );
 
-          if (!isDatePast) {
-            console.log("curDate", curDate);
-            console.log("bookedDates", bookedDates);
-            console.log("dateAlreadyBooked", dateAlreadyBooked);
-          }
+          // if (!isDatePast) {
+          //   console.log("curDate", curDate);
+          //   console.log("bookedDates", bookedDates);
+          //   console.log("dateAlreadyBooked", dateAlreadyBooked);
+          //   console.log(
+          //     "----------------------------------------------------------------------------------------------------------",
+          //   );
+          // }
 
           return isDatePast || dateAlreadyBooked;
         }}

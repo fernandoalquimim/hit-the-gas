@@ -15,15 +15,12 @@ async function Booking({ car, booking }) {
     getBookedDatesByCarId(car.id),
   ]);
 
-  console.log("booking", booking);
-
   const editingReservedDates = booking
     ? eachDayOfInterval({
         start: new Date(booking.startDate),
         end: new Date(booking.endDate),
       })
     : [];
-  console.log("editingReservedDates", editingReservedDates);
 
   const displayingBookedDates = bookedDates.filter(
     (booked) =>
@@ -31,7 +28,6 @@ async function Booking({ car, booking }) {
         (editing) => editing.getTime() === booked.getTime(),
       ),
   );
-  console.log("displayingBookedDates", displayingBookedDates);
 
   return (
     <Context>
