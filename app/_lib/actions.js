@@ -27,6 +27,8 @@ export async function createBooking(bookingData, formData) {
 
   const newBooking = {
     ...bookingData,
+    startDate: bookingData.startDate.setUTCHours(0, 0, 0, 0),
+    endDate: bookingData.endDate.setUTCHours(0, 0, 0, 0),
     clientId: session.user.clientId,
     numPeople: Number(data.numPeople),
     observations: data.observations.slice(0, 1000),
