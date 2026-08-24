@@ -24,11 +24,6 @@ function isAlreadyBooked(range, datesArr) {
 }
 
 function DateSelector({ settings, car, bookedDates, booking }) {
-  const datesNoTZ = bookedDates.map((date) => {
-    const [year, mouth, day] = date.split("-").map(Number);
-    return new Date(year, mouth - 1, day);
-  });
-  console.log("DateSelector.js: datesNoTZ = ", datesNoTZ);
   const {
     range,
     setRange,
@@ -44,7 +39,12 @@ function DateSelector({ settings, car, bookedDates, booking }) {
   const { minBookingLength, maxBookingLength } = settings;
   const { regularPrice, discount } = car;
 
-  const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
+  const datesNoTZ = bookedDates.map((date) => {
+    const [year, mouth, day] = date.split("-").map(Number);
+    return new Date(year, mouth - 1, day);
+  });
+  console.log("DateSelector.js: datesNoTZ = ", datesNoTZ);
+  const displayRange = isAlreadyBooked(range, datesNoTZ) ? {} : range;
 
   const carPrice = numDays * (regularPrice - discount);
   const selectorMode = hasDriver ? "single" : "range";
@@ -112,18 +112,9 @@ function DateSelector({ settings, car, bookedDates, booking }) {
         numberOfMonths={2}
         disabled={(curDate) => {
           const isDatePast = isPast(curDate);
-          const dateAlreadyBooked = bookedDates.some((date) =>
+          const dateAlreadyBooked = datesNoTZ.some((date) =>
             isSameDay(date, curDate),
           );
-
-          // if (!isDatePast) {
-          //   console.log("curDate", curDate);
-          //   console.log("bookedDates", bookedDates);
-          //   console.log("dateAlreadyBooked", dateAlreadyBooked);
-          //   console.log(
-          //     "----------------------------------------------------------------------------------------------------------",
-          //   );
-          // }
 
           return isDatePast || dateAlreadyBooked;
         }}
