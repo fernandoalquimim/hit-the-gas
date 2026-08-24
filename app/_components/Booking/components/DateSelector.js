@@ -23,7 +23,7 @@ function isAlreadyBooked(range, datesArr) {
   );
 }
 
-function DateSelector({ settings, car, bookedDates, booking }) {
+function DateSelector({ settings, car, reservedDates, booking }) {
   const {
     range,
     setRange,
@@ -38,6 +38,10 @@ function DateSelector({ settings, car, bookedDates, booking }) {
 
   const { minBookingLength, maxBookingLength } = settings;
   const { regularPrice, discount } = car;
+
+  const bookedDates = reservedDates.map((date) =>
+    new Date(date).setUTCHours(0, 0, 0, 0),
+  );
 
   const displayRange = isAlreadyBooked(range, bookedDates) ? {} : range;
 
